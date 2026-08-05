@@ -1,0 +1,1184 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Trouve ton artisan - Dossier de projet</title>
+    <link rel="stylesheet" href="dossier.css" />
+  </head>
+  <body>
+    <!-- ================= PAGE DE GARDE ================= -->
+    <section class="garde">
+      <img class="garde__logo" src="../assets/logo.png" alt="Trouve ton artisan, avec la région Auvergne-Rhône-Alpes" />
+
+      <p class="garde__surtitre">Dossier de projet</p>
+      <h1 class="garde__titre">Trouve ton artisan</h1>
+      <p class="garde__accroche">
+        Plateforme de mise en relation entre les particuliers<br />
+        et les artisans de la région Auvergne-Rhône-Alpes
+      </p>
+
+      <div class="garde__bloc">
+        <p><strong>Devoir bilan</strong></p>
+        <p>Titre professionnel Développeur Web et Web Mobile</p>
+      </div>
+
+      <div class="garde__pied">
+        <p><strong>Kévin Reis</strong></p>
+        <p>Août 2026</p>
+      </div>
+    </section>
+
+    <!-- ================= SOMMAIRE ================= -->
+    <section class="page">
+      <h1 class="titre-section">Sommaire</h1>
+
+      <ul class="sommaire">
+        <li><a href="#s1">1. Contexte du projet</a><span class="num" data-cible="s1"></span></li>
+        <li class="sous"><a href="#s1-1">1.1 Présentation de l'entreprise</a><span class="num" data-cible="s1-1"></span></li>
+        <li class="sous"><a href="#s1-2">1.2 Expression des besoins</a><span class="num" data-cible="s1-2"></span></li>
+        <li class="sous"><a href="#s1-3">1.3 Contraintes</a><span class="num" data-cible="s1-3"></span></li>
+        <li class="sous"><a href="#s1-4">1.4 Livrables attendus</a><span class="num" data-cible="s1-4"></span></li>
+
+        <li><a href="#s2">2. Maquettes</a><span class="num" data-cible="s2"></span></li>
+        <li class="sous"><a href="#s2-1">2.1 Démarche de conception</a><span class="num" data-cible="s2-1"></span></li>
+        <li class="sous"><a href="#s2-2">2.2 Enchaînement des écrans</a><span class="num" data-cible="s2-2"></span></li>
+        <li class="sous"><a href="#s2-3">2.3 Maquettes par support</a><span class="num" data-cible="s2-3"></span></li>
+        <li class="sous"><a href="#s2-4">2.4 Lien vers les maquettes complètes</a><span class="num" data-cible="s2-4"></span></li>
+
+        <li><a href="#s3">3. Base de données</a><span class="num" data-cible="s3"></span></li>
+        <li class="sous"><a href="#s3-1">3.1 Règles de gestion</a><span class="num" data-cible="s3-1"></span></li>
+        <li class="sous"><a href="#s3-2">3.2 Dictionnaire des données</a><span class="num" data-cible="s3-2"></span></li>
+        <li class="sous"><a href="#s3-3">3.3 Modèle conceptuel (MCD)</a><span class="num" data-cible="s3-3"></span></li>
+        <li class="sous"><a href="#s3-4">3.4 Modèle logique (MLD)</a><span class="num" data-cible="s3-4"></span></li>
+        <li class="sous"><a href="#s3-5">3.5 Modèle physique et choix techniques</a><span class="num" data-cible="s3-5"></span></li>
+        <li class="sous"><a href="#s3-6">3.6 Jeu d'essai</a><span class="num" data-cible="s3-6"></span></li>
+
+        <li><a href="#s4">4. Sécurité</a><span class="num" data-cible="s4"></span></li>
+        <li class="sous"><a href="#s4-1">4.1 Protection de la base de données</a><span class="num" data-cible="s4-1"></span></li>
+        <li class="sous"><a href="#s4-2">4.2 Restriction de l'accès à l'API</a><span class="num" data-cible="s4-2"></span></li>
+        <li class="sous"><a href="#s4-3">4.3 Contrôle des données entrantes</a><span class="num" data-cible="s4-3"></span></li>
+        <li class="sous"><a href="#s4-4">4.4 Protection du formulaire de contact</a><span class="num" data-cible="s4-4"></span></li>
+        <li class="sous"><a href="#s4-5">4.5 En-têtes HTTP et configuration</a><span class="num" data-cible="s4-5"></span></li>
+        <li class="sous"><a href="#s4-6">4.6 Gestion des erreurs et des secrets</a><span class="num" data-cible="s4-6"></span></li>
+        <li class="sous"><a href="#s4-7">4.7 Vérification par les tests</a><span class="num" data-cible="s4-7"></span></li>
+
+        <li><a href="#s5">5. Veille de sécurité</a><span class="num" data-cible="s5"></span></li>
+        <li class="sous"><a href="#s5-1">5.1 Méthode et sources</a><span class="num" data-cible="s5-1"></span></li>
+        <li class="sous"><a href="#s5-2">5.2 Vulnérabilités trouvées</a><span class="num" data-cible="s5-2"></span></li>
+        <li class="sous"><a href="#s5-3">5.3 Limite connue et assumée</a><span class="num" data-cible="s5-3"></span></li>
+
+        <li><a href="#s6">6. Accessibilité et conformité</a><span class="num" data-cible="s6"></span></li>
+        <li><a href="#s7">7. Liens et accès</a><span class="num" data-cible="s7"></span></li>
+      </ul>
+    </section>
+
+    <!-- ================= 1. CONTEXTE ================= -->
+    <section class="page">
+      <h1 id="s1" class="titre-section">1. Contexte du projet</h1>
+
+      <h2 id="s1-1">1.1 Présentation de l'entreprise</h2>
+      <p>
+        La Région Auvergne-Rhône-Alpes est une collectivité territoriale qui couvre douze
+        départements du quart sud-est de la France. Elle dispose de bureaux à Lyon et à
+        Clermont-Ferrand ; le projet est suivi par l'antenne lyonnaise.
+      </p>
+      <p>
+        L'artisanat occupe une place déterminante sur ce territoire : près d'un tiers des
+        entreprises de la région relèvent de ce secteur, soit environ 221 000 entreprises
+        recensées en 2021. C'est l'une des régions les plus artisanales de France, et la
+        collectivité souhaite entretenir cette dynamique. La création de la plateforme
+        « Trouve ton artisan » répond directement à cette ambition.
+      </p>
+
+      <h2 id="s1-2">1.2 Expression des besoins</h2>
+      <p>
+        La Région souhaite une plateforme qui permette à un particulier de trouver un artisan
+        de son territoire, puis de le contacter facilement pour obtenir un renseignement, une
+        prestation ou un tarif, au moyen d'un formulaire de contact.
+      </p>
+      <p>Le besoin se décompose en trois volets :</p>
+      <ul>
+        <li>
+          <strong>Un volet maquettage.</strong> La Région veut valider le design avant tout
+          développement. Les maquettes doivent couvrir les trois supports : téléphone,
+          tablette et ordinateur.
+        </li>
+        <li>
+          <strong>Un volet front-end.</strong> Un site qui consomme une API et n'affiche aucune
+          donnée codée en dur, y compris les libellés du menu de navigation.
+        </li>
+        <li>
+          <strong>Un volet données.</strong> Une API qui interroge exclusivement une base
+          MySQL, laquelle sera alimentée à terme par une application développée
+          ultérieurement. L'accès à cette API doit être limité à l'application.
+        </li>
+      </ul>
+      <p>Deux règles de gestion encadrent les données :</p>
+      <ul>
+        <li>un artisan apparaît dans une seule spécialité ;</li>
+        <li>une spécialité est rattachée à une seule catégorie.</li>
+      </ul>
+
+      <h2 id="s1-3">1.3 Contraintes</h2>
+
+      <table>
+        <thead>
+          <tr><th>Nature</th><th>Contrainte</th><th>Conséquence sur le projet</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Accessibilité</td>
+            <td>Site accessible à tous, y compris aux personnes âgées et en situation de handicap. Conformité à la norme WCAG 2.1.</td>
+            <td>Contrastes vérifiés, navigation clavier complète, libellés explicites, structure sémantique, lien d'évitement.</td>
+          </tr>
+          <tr>
+            <td>Ergonomie</td>
+            <td>Conception mobile first, fonctionnement optimal sur toutes les tailles d'écran.</td>
+            <td>Feuilles de style écrites du plus petit écran vers le plus grand, points de rupture en <code>min-width</code> uniquement.</td>
+          </tr>
+          <tr>
+            <td>Sécurité</td>
+            <td>Point important pour une collectivité. Accès à l'API restreint à l'application.</td>
+            <td>Voir la partie 4, consacrée entièrement à ce sujet.</td>
+          </tr>
+          <tr>
+            <td>Identité visuelle</td>
+            <td>Cohérence avec l'environnement numérique de la Région. Police Graphik, palette et logo imposés.</td>
+            <td>Palette reprise à l'identique, logo et favicon fournis intégrés, pile de polices calquée sur Graphik.</td>
+          </tr>
+          <tr>
+            <td>Technique</td>
+            <td>Figma, ReactJS, Bootstrap, Sass, Node.js, Express, Sequelize, MySQL ou MariaDB, Git et GitHub.</td>
+            <td>Pile respectée sans exception.</td>
+          </tr>
+          <tr>
+            <td>Qualité</td>
+            <td>Code propre, commenté et indenté. Conformité aux vérificateurs du W3C.</td>
+            <td>Commentaires en français expliquant les intentions, validation W3C des pages rendues.</td>
+          </tr>
+          <tr>
+            <td>Mise en ligne</td>
+            <td>Le site doit être hébergé.</td>
+            <td>Voir la partie 7.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Charte graphique imposée</h3>
+      <table class="palette">
+        <thead>
+          <tr><th>Couleur</th><th>Code</th><th>Usage retenu</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="pastille" style="background:#f1f8fc"></span></td><td><code>#f1f8fc</code></td><td>Fonds de section</td></tr>
+          <tr><td><span class="pastille" style="background:#0074c7"></span></td><td><code>#0074c7</code></td><td>Couleur principale, boutons, liens</td></tr>
+          <tr><td><span class="pastille" style="background:#00497c"></span></td><td><code>#00497c</code></td><td>Titres, survols, contour de focus</td></tr>
+          <tr><td><span class="pastille" style="background:#384050"></span></td><td><code>#384050</code></td><td>Texte courant, pied de page</td></tr>
+          <tr><td><span class="pastille" style="background:#cd2c2e"></span></td><td><code>#cd2c2e</code></td><td>Erreurs et alertes</td></tr>
+          <tr><td><span class="pastille" style="background:#82b864"></span></td><td><code>#82b864</code></td><td>Confirmations, artisan du mois</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="s1-4">1.4 Livrables attendus</h2>
+      <table>
+        <thead><tr><th>Livrable</th><th>État</th></tr></thead>
+        <tbody>
+          <tr><td>Maquettes des trois supports</td><td>Partie 2</td></tr>
+          <tr><td>Site front-end consommant l'API</td><td>Réalisé</td></tr>
+          <tr><td>API REST interrogeant MySQL</td><td>Réalisée</td></tr>
+          <tr><td>Script de création de la base (.sql)</td><td><code>database/01-create-database.sql</code></td></tr>
+          <tr><td>Script d'alimentation de la base (.sql)</td><td><code>database/02-seed-database.sql</code></td></tr>
+          <tr><td>Fichier README.md</td><td>À la racine du dépôt</td></tr>
+          <tr><td>Dépôt GitHub</td><td>Partie 7</td></tr>
+          <tr><td>Site accessible en ligne</td><td>Partie 7</td></tr>
+          <tr><td>Le présent dossier</td><td>Ce document</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ================= 2. MAQUETTES ================= -->
+    <section class="page">
+      <h1 id="s2" class="titre-section">2. Maquettes</h1>
+
+      <h2 id="s2-1">2.1 Démarche de conception</h2>
+      <p>
+        Les maquettes ont été construites à partir de la charte imposée par la Région : la
+        palette de six couleurs, le logo et le favicon fournis dans le cahier des charges, et
+        une typographie linéale reprenant les caractéristiques de la police Graphik.
+      </p>
+      <p>
+        La conception suit le principe <em>mobile first</em> : l'écran de téléphone a été
+        dessiné en premier, puisqu'il impose les arbitrages les plus stricts sur la
+        hiérarchie de l'information. Les versions tablette et ordinateur en découlent par
+        élargissement progressif, la grille passant d'une colonne à deux puis à trois.
+      </p>
+      <p>Trois principes ont guidé les choix d'interface :</p>
+      <ul>
+        <li>
+          <strong>Aller au plus simple.</strong> Le cahier des charges insiste sur un site
+          accessible à tous. Chaque écran remplit une fonction unique et clairement énoncée.
+        </li>
+        <li>
+          <strong>Ne jamais reposer sur la seule couleur.</strong> La catégorie active du menu
+          est marquée par un soulignement épais en plus de la couleur ; la note est écrite en
+          chiffres à côté des étoiles.
+        </li>
+        <li>
+          <strong>Des zones tactiles confortables.</strong> Les cartes d'artisans sont
+          cliquables sur toute leur surface, et non sur un lien de quelques pixels.
+        </li>
+      </ul>
+
+      <h2 id="s2-2">2.2 Enchaînement des écrans</h2>
+      <p>
+        Le parcours principal reprend les quatre étapes annoncées sur la page d'accueil :
+        choisir une catégorie, choisir un artisan, le contacter, recevoir une réponse sous
+        48 heures.
+      </p>
+
+      <div class="schema">
+        <pre>
+                        ┌─────────────────────┐
+                        │      ACCUEIL        │
+                        │  4 étapes + les 3   │
+                        │ artisans du mois    │
+                        └──────────┬──────────┘
+               menu catégorie      │      barre de recherche
+            ┌───────────────────────┴───────────────────────┐
+            ▼                                               ▼
+ ┌─────────────────────┐                       ┌─────────────────────┐
+ │  LISTE PAR CATÉGORIE│                       │ RÉSULTATS RECHERCHE │
+ │   cartes artisans   │                       │   cartes artisans   │
+ └──────────┬──────────┘                       └──────────┬──────────┘
+            └───────────────────┬───────────────────────┘
+                                ▼
+                     ┌─────────────────────┐
+                     │    FICHE ARTISAN    │
+                     │ visuel, note, à     │
+                     │ propos, site web    │
+                     └──────────┬──────────┘
+                                ▼
+                     ┌─────────────────────┐
+                     │ FORMULAIRE CONTACT  │
+                     │  confirmation 48h   │
+                     └─────────────────────┘
+
+  Depuis n'importe quel écran :
+    en-tête  ──► logo (accueil), menu des 4 catégories, recherche
+    pied     ──► mentions légales, données personnelles, accessibilité, cookies
+    adresse inconnue ──► PAGE 404
+        </pre>
+      </div>
+
+      <p>
+        L'en-tête et le pied de page sont identiques sur toutes les pages, conformément au
+        cahier des charges. La page 404 s'affiche pour toute adresse inconnue, y compris une
+        catégorie ou un identifiant d'artisan qui n'existe pas.
+      </p>
+    </section>
+
+    <section class="page">
+      <h2 id="s2-3">2.3 Maquettes par support</h2>
+
+      <h3>Page d'accueil</h3>
+      <div class="galerie galerie--trois">
+        <figure>
+          <img src="../captures/accueil-mobile.png" alt="Page d'accueil sur téléphone" />
+          <figcaption>Téléphone, 390 px</figcaption>
+        </figure>
+        <figure>
+          <img src="../captures/accueil-tablette.png" alt="Page d'accueil sur tablette" />
+          <figcaption>Tablette, 768 px</figcaption>
+        </figure>
+        <figure>
+          <img src="../captures/accueil-bureau.png" alt="Page d'accueil sur ordinateur" />
+          <figcaption>Ordinateur, 1440 px</figcaption>
+        </figure>
+      </div>
+      <p class="legende">
+        Le menu horizontal se replie en bouton sur téléphone. Les quatre étapes passent d'une
+        colonne à quatre, et les artisans du mois d'une carte par ligne à trois.
+      </p>
+    </section>
+
+    <section class="page">
+      <h3>Liste des artisans d'une catégorie</h3>
+      <div class="galerie galerie--trois">
+        <figure>
+          <img src="../captures/liste-mobile.png" alt="Liste des artisans sur téléphone" />
+          <figcaption>Téléphone</figcaption>
+        </figure>
+        <figure>
+          <img src="../captures/liste-tablette.png" alt="Liste des artisans sur tablette" />
+          <figcaption>Tablette</figcaption>
+        </figure>
+        <figure>
+          <img src="../captures/liste-bureau.png" alt="Liste des artisans sur ordinateur" />
+          <figcaption>Ordinateur</figcaption>
+        </figure>
+      </div>
+      <p class="legende">
+        Chaque carte porte le nom, la note sur cinq en étoiles, la spécialité et la
+        localisation. Elle est cliquable sur toute sa surface et mène à la fiche complète.
+      </p>
+
+      <h3>Fiche artisan</h3>
+      <div class="galerie galerie--trois">
+        <figure>
+          <img src="../captures/fiche-artisan-mobile.png" alt="Fiche artisan sur téléphone" />
+          <figcaption>Téléphone</figcaption>
+        </figure>
+        <figure>
+          <img src="../captures/fiche-artisan-tablette.png" alt="Fiche artisan sur tablette" />
+          <figcaption>Tablette</figcaption>
+        </figure>
+        <figure>
+          <img src="../captures/fiche-artisan-bureau.png" alt="Fiche artisan sur ordinateur" />
+          <figcaption>Ordinateur</figcaption>
+        </figure>
+      </div>
+      <p class="legende">
+        Visuel, note, spécialité, localisation, rubrique « À propos », lien vers le site de
+        l'artisan lorsqu'il existe, et formulaire de contact.
+      </p>
+    </section>
+
+    <section class="page">
+      <h3>Page 404 et pages légales</h3>
+      <div class="galerie galerie--quatre">
+        <figure>
+          <img src="../captures/erreur-404-mobile.png" alt="Page 404 sur téléphone" />
+          <figcaption>404, téléphone</figcaption>
+        </figure>
+        <figure>
+          <img src="../captures/erreur-404-bureau.png" alt="Page 404 sur ordinateur" />
+          <figcaption>404, ordinateur</figcaption>
+        </figure>
+        <figure>
+          <img src="../captures/page-legale-mobile.png" alt="Page légale sur téléphone" />
+          <figcaption>Page légale, téléphone</figcaption>
+        </figure>
+        <figure>
+          <img src="../captures/recherche-bureau.png" alt="Résultats de recherche sur ordinateur" />
+          <figcaption>Recherche, ordinateur</figcaption>
+        </figure>
+      </div>
+      <p class="legende">
+        Les quatre pages légales partagent un gabarit commun : en-tête, pied de page et un
+        texte d'attente, leur contenu devant être rédigé ultérieurement par un cabinet
+        spécialisé.
+      </p>
+
+      <h2 id="s2-4">2.4 Lien vers les maquettes complètes</h2>
+      <p class="encadre-info" id="lien-figma">
+        <strong>Maquettes Figma :</strong> lien à insérer.
+      </p>
+    </section>
+
+    <!-- ================= 3. BASE DE DONNÉES ================= -->
+    <section class="page">
+      <h1 id="s3" class="titre-section">3. Base de données</h1>
+
+      <h2 id="s3-1">3.1 Règles de gestion</h2>
+      <p>
+        Les règles issues du cahier des charges structurent l'ensemble du modèle. Elles ont
+        été formulées explicitement avant toute modélisation.
+      </p>
+      <table>
+        <thead><tr><th>Code</th><th>Règle</th></tr></thead>
+        <tbody>
+          <tr><td>RG1</td><td>Un artisan apparaît dans une seule spécialité.</td></tr>
+          <tr><td>RG2</td><td>Une spécialité est rattachée à une seule catégorie.</td></tr>
+          <tr><td>RG3</td><td>Une catégorie regroupe plusieurs spécialités.</td></tr>
+          <tr><td>RG4</td><td>Une spécialité peut être exercée par plusieurs artisans.</td></tr>
+          <tr><td>RG5</td><td>La note d'un artisan est comprise entre 0 et 5, avec une décimale.</td></tr>
+          <tr><td>RG6</td><td>Un artisan peut ne pas disposer de site web.</td></tr>
+          <tr><td>RG7</td><td>Un artisan peut être mis en avant comme artisan du mois.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="s3-2">3.2 Dictionnaire des données</h2>
+      <table class="petite">
+        <thead>
+          <tr><th>Entité</th><th>Propriété</th><th>Type</th><th>Contraintes</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Categorie</td><td>id_categorie</td><td>TINYINT UNSIGNED</td><td>Clé primaire</td><td>Identifiant</td></tr>
+          <tr><td>Categorie</td><td>nom</td><td>VARCHAR(50)</td><td>Non nul, unique</td><td>Libellé du menu</td></tr>
+          <tr><td>Specialite</td><td>id_specialite</td><td>SMALLINT UNSIGNED</td><td>Clé primaire</td><td>Identifiant</td></tr>
+          <tr><td>Specialite</td><td>nom</td><td>VARCHAR(50)</td><td>Non nul, unique</td><td>Libellé du métier</td></tr>
+          <tr><td>Specialite</td><td>id_categorie</td><td>TINYINT UNSIGNED</td><td>Clé étrangère</td><td>Catégorie de rattachement</td></tr>
+          <tr><td>Artisan</td><td>id_artisan</td><td>SMALLINT UNSIGNED</td><td>Clé primaire</td><td>Identifiant</td></tr>
+          <tr><td>Artisan</td><td>nom</td><td>VARCHAR(100)</td><td>Non nul, indexé</td><td>Nom de l'artisan ou de l'entreprise</td></tr>
+          <tr><td>Artisan</td><td>note</td><td>DECIMAL(2,1)</td><td>Non nul, entre 0 et 5</td><td>Note sur cinq</td></tr>
+          <tr><td>Artisan</td><td>ville</td><td>VARCHAR(100)</td><td>Non nul</td><td>Localisation</td></tr>
+          <tr><td>Artisan</td><td>a_propos</td><td>TEXT</td><td>Nullable</td><td>Présentation</td></tr>
+          <tr><td>Artisan</td><td>email</td><td>VARCHAR(255)</td><td>Non nul</td><td>Destinataire du formulaire</td></tr>
+          <tr><td>Artisan</td><td>site_web</td><td>VARCHAR(255)</td><td>Nullable</td><td>Site de l'artisan</td></tr>
+          <tr><td>Artisan</td><td>image</td><td>VARCHAR(255)</td><td>Nullable</td><td>Visuel de la fiche</td></tr>
+          <tr><td>Artisan</td><td>artisan_du_mois</td><td>BOOLEAN</td><td>Non nul, défaut faux</td><td>Mise en avant sur l'accueil</td></tr>
+          <tr><td>Artisan</td><td>id_specialite</td><td>SMALLINT UNSIGNED</td><td>Clé étrangère</td><td>Spécialité exercée</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Deux écarts assumés par rapport au fichier fourni</h3>
+      <p>
+        Le fichier client recense les données à stocker pour chaque artisan. Deux ajustements
+        ont été nécessaires, et sont assumés comme tels :
+      </p>
+      <ol>
+        <li>
+          <strong>La colonne <code>image</code></strong> ne figure pas dans le fichier, alors
+          que le cahier des charges impose une image sur la fiche artisan. Elle a donc été
+          ajoutée en nullable. Tant qu'elle reste vide, l'interface affiche une illustration
+          générée aux couleurs de la catégorie, reprenant l'initiale de l'artisan et le nom de
+          sa spécialité. La colonne est prête pour les photos réelles que fournira
+          l'application d'alimentation prévue par le client.
+        </li>
+        <li>
+          <strong>La colonne <code>artisan_du_mois</code></strong> correspond à la colonne
+          « Top » du fichier. Elle a été renommée pour être auto-documentée : un développeur
+          qui reprend le projet comprend son rôle sans consulter la documentation.
+        </li>
+      </ol>
+    </section>
+
+    <section class="page">
+      <h2 id="s3-3">3.3 Modèle conceptuel de données (MCD)</h2>
+      <p>Formalisme Merise, avec les cardinalités déduites des règles de gestion :</p>
+
+      <div class="schema">
+        <pre>
+              ┌──────────────────────┐
+              │      CATEGORIE       │
+              ├──────────────────────┤
+              │ id_categorie         │
+              │ nom                  │
+              └──────────┬───────────┘
+                         │ 1,n
+                    ╱────┴─────╲
+                   ╱ APPARTENIR ╲
+                    ╲──────────╱
+                         │ 1,1
+              ┌──────────┴───────────┐
+              │      SPECIALITE      │
+              ├──────────────────────┤
+              │ id_specialite        │
+              │ nom                  │
+              └──────────┬───────────┘
+                         │ 1,n
+                    ╱────┴─────╲
+                   ╱   EXERCER  ╲
+                    ╲──────────╱
+                         │ 1,1
+              ┌──────────┴───────────┐
+              │       ARTISAN        │
+              ├──────────────────────┤
+              │ id_artisan           │
+              │ nom                  │
+              │ note                 │
+              │ ville                │
+              │ a_propos             │
+              │ email                │
+              │ site_web             │
+              │ image                │
+              │ artisan_du_mois      │
+              └──────────────────────┘
+        </pre>
+      </div>
+
+      <p><strong>Lecture des cardinalités :</strong></p>
+      <ul>
+        <li>
+          Une catégorie regroupe <strong>1 à n</strong> spécialités ; une spécialité appartient
+          à <strong>une et une seule</strong> catégorie (RG2 et RG3).
+        </li>
+        <li>
+          Une spécialité est exercée par <strong>1 à n</strong> artisans ; un artisan exerce
+          <strong>une et une seule</strong> spécialité (RG1 et RG4).
+        </li>
+      </ul>
+      <p>
+        Les deux associations sont de type 1:N. Le modèle ne comporte aucune association N:N,
+        aucune table de liaison n'est donc nécessaire.
+      </p>
+
+      <h2 id="s3-4">3.4 Modèle logique de données (MLD)</h2>
+      <p>
+        Le passage du conceptuel au logique applique la règle des associations 1:N : la clé
+        primaire du côté « 1 » migre dans la table du côté « n », où elle devient clé
+        étrangère.
+      </p>
+
+      <div class="schema">
+        <pre>
+CATEGORIE  (<span class="pk">id_categorie</span>, nom)
+
+SPECIALITE (<span class="pk">id_specialite</span>, nom, <span class="fk">#id_categorie</span>)
+              <span class="fk">#id_categorie</span> → CATEGORIE.id_categorie
+
+ARTISAN    (<span class="pk">id_artisan</span>, nom, note, ville, a_propos, email,
+            site_web, image, artisan_du_mois, <span class="fk">#id_specialite</span>)
+              <span class="fk">#id_specialite</span> → SPECIALITE.id_specialite
+        </pre>
+      </div>
+      <p class="legende">
+        Les clés primaires sont soulignées, les clés étrangères précédées d'un dièse.
+      </p>
+    </section>
+
+    <section class="page">
+      <h2 id="s3-5">3.5 Modèle physique et choix techniques</h2>
+      <p>
+        Le modèle physique est le script <code>database/01-create-database.sql</code>. Chaque
+        choix répond à un besoin précis :
+      </p>
+      <table>
+        <thead><tr><th>Choix</th><th>Justification</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Moteur InnoDB</td>
+            <td>Seul moteur MySQL et MariaDB à gérer réellement les clés étrangères et les transactions. MyISAM accepterait la syntaxe des clés étrangères sans jamais les appliquer.</td>
+          </tr>
+          <tr>
+            <td>Jeu de caractères utf8mb4, interclassement unicode_ci</td>
+            <td>Gère les accents et les caractères spéciaux. L'interclassement rend les comparaisons insensibles à la casse et aux accents : une recherche sur « labbe » retrouve « Labbé ».</td>
+          </tr>
+          <tr>
+            <td><code>DECIMAL(2,1)</code> pour la note</td>
+            <td>Évite les erreurs d'arrondi du flottant sur une valeur affichée telle quelle à l'utilisateur.</td>
+          </tr>
+          <tr>
+            <td><code>CHECK (note &gt;= 0 AND note &lt;= 5)</code></td>
+            <td>Applique la règle RG5 au niveau du SGBD. La contrainte tient même si les données entrent par une autre voie que l'application, ce qui sera le cas avec l'application d'alimentation prévue.</td>
+          </tr>
+          <tr>
+            <td><code>ON DELETE RESTRICT</code></td>
+            <td>Interdit la suppression d'une catégorie ou d'une spécialité encore utilisée. Empêche l'apparition d'enregistrements orphelins.</td>
+          </tr>
+          <tr>
+            <td>Index sur <code>nom</code>, les clés étrangères et <code>artisan_du_mois</code></td>
+            <td>Couvre exactement les trois requêtes du site : recherche par nom, filtrage par catégorie, artisans du mois.</td>
+          </tr>
+          <tr>
+            <td>Types entiers dimensionnés au plus juste</td>
+            <td><code>TINYINT</code> pour quatre catégories, <code>SMALLINT</code> pour les spécialités et les artisans : moins d'espace occupé sur le disque et dans les index.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="s3-6">3.6 Jeu d'essai</h2>
+      <p>
+        Le script <code>database/02-seed-database.sql</code> insère les données du client,
+        puis exécute quatre requêtes de contrôle dont les résultats attendus sont documentés
+        en commentaire. Les scripts ont été exécutés sur MariaDB 10.4 :
+      </p>
+      <table>
+        <thead><tr><th>Contrôle</th><th>Résultat attendu</th><th>Résultat obtenu</th></tr></thead>
+        <tbody>
+          <tr><td>Comptage des lignes</td><td>4 catégories, 15 spécialités, 17 artisans</td><td class="ok">Conforme</td></tr>
+          <tr><td>Artisans du mois</td><td>3 : Au pain chaud, Chocolaterie Labbé, Orville Salmons</td><td class="ok">Conforme</td></tr>
+          <tr><td>Répartition par catégorie</td><td>Alimentation 4, Bâtiment 4, Fabrication 3, Services 6</td><td class="ok">Conforme</td></tr>
+          <tr><td>Notes hors des bornes [0 ; 5]</td><td>Aucune ligne</td><td class="ok">Conforme</td></tr>
+        </tbody>
+      </table>
+      <p>
+        Les deux scripts sont rejouables : le premier recrée la base, le second vide les
+        tables avant insertion. Une exécution répétée ne produit ni doublon ni erreur.
+      </p>
+    </section>
+
+    <!-- ================= 4. SÉCURITÉ ================= -->
+    <section class="page">
+      <h1 id="s4" class="titre-section">4. Sécurité</h1>
+      <p>
+        La sécurité étant présentée comme « un point important pour les collectivités », elle
+        a été traitée à chaque couche du projet plutôt qu'ajoutée à la fin. Chaque mesure est
+        présentée ci-dessous avec sa mise en œuvre concrète et l'attaque qu'elle écarte.
+      </p>
+
+      <h2 id="s4-1">4.1 Protection de la base de données</h2>
+
+      <div class="mesure">
+        <h3>Compte applicatif en lecture seule</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> Le script de création ajoute un compte
+          <code>tta_app</code> qui ne reçoit que le droit <code>SELECT</code> sur les trois
+          tables. L'API se connecte avec ce compte, jamais avec <code>root</code>, dont les
+          identifiants n'apparaissent nulle part dans le projet.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> C'est l'application du principe du moindre privilège. Le
+          site est en lecture seule par nature : rien ne justifie que son compte puisse écrire.
+          Si une faille permettait malgré tout d'exécuter du SQL arbitraire, l'attaquant ne
+          pourrait ni modifier ni supprimer les données, ni détruire une table. Le contrôle a
+          été vérifié : une requête <code>UPDATE</code> lancée avec ce compte est rejetée
+          (<code>ER_TABLEACCESS_DENIED_ERROR</code>).
+        </p>
+      </div>
+
+      <div class="mesure">
+        <h3>Requêtes préparées, jamais de SQL concaténé</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> Tous les accès passent par Sequelize, qui transmet
+          les valeurs en paramètres liés. Aucune chaîne SQL n'est construite par concaténation.
+          L'option <code>multipleStatements: false</code> interdit en outre au pilote
+          d'exécuter plusieurs requêtes dans un même appel.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> C'est la protection de référence contre l'injection SQL,
+          première entrée du Top 10 de l'OWASP pendant des années. Une valeur transmise en
+          paramètre est traitée comme une donnée et jamais comme du code, quelle que soit son
+          contenu. L'interdiction des requêtes multiples ferme la variante dite « en chaîne »,
+          où l'attaquant ajoute une seconde instruction après un point-virgule.
+        </p>
+      </div>
+
+      <div class="mesure">
+        <h3>Échappement des caractères joker</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> Le terme saisi dans la barre de recherche alimente
+          une clause <code>LIKE</code>. Les caractères <code>%</code>, <code>_</code> et
+          <code>\</code> y sont échappés avant construction du motif.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> Sans cet échappement, une recherche sur <code>%</code>
+          retournerait la totalité de la table : ce n'est pas une injection SQL, mais bien une
+          extraction complète des données par un moyen légitime. C'est le type de détail qui
+          échappe aux protections génériques.
+        </p>
+      </div>
+
+      <h2 id="s4-2">4.2 Restriction de l'accès à l'API</h2>
+
+      <div class="mesure">
+        <h3>Clé d'API comparée en temps constant</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> Chaque requête doit présenter la clé dans l'en-tête
+          <code>x-api-key</code>. La vérification est montée une seule fois, au niveau du
+          routeur : une route ajoutée plus tard est protégée d'office. La comparaison n'utilise
+          pas l'opérateur d'égalité mais <code>timingSafeEqual</code> sur les empreintes
+          SHA-256 des deux valeurs.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> La clé répond à l'exigence du cahier des charges de limiter
+          l'accès à l'application. La comparaison en temps constant écarte les attaques
+          temporelles : une comparaison classique s'arrête au premier caractère différent, et
+          la durée de réponse renseigne alors un attaquant sur le nombre de caractères déjà
+          corrects, ce qui permet de reconstituer la clé caractère par caractère. Le passage
+          par une empreinte garantit par ailleurs deux tampons de longueur identique, condition
+          exigée par la fonction.
+        </p>
+      </div>
+
+      <div class="mesure">
+        <h3>Politique CORS restrictive</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> Seules les origines déclarées dans la variable
+          d'environnement <code>CORS_ORIGIN</code> sont acceptées, et seules les méthodes
+          <code>GET</code> et <code>POST</code> sont autorisées.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> Un site tiers ne peut pas appeler l'API depuis le
+          navigateur d'un visiteur pour exploiter sa session ou moissonner les données en se
+          présentant sous son identité. Limiter les méthodes réduit d'autant la surface
+          exposée.
+        </p>
+      </div>
+
+      <div class="mesure">
+        <h3>Limitation de débit</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> Une limitation générale s'applique à toutes les
+          routes, doublée d'une limitation nettement plus stricte sur le formulaire de contact.
+          Les deux seuils sont configurables par variables d'environnement.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> Elle freine trois attaques distinctes : la force brute sur
+          la clé d'API, le moissonnage massif du catalogue, et la saturation du service. Sur le
+          formulaire, elle empêche surtout qu'un spammeur ne transforme l'API en relais d'envoi
+          gratuit.
+        </p>
+      </div>
+
+      <h2 id="s4-3">4.3 Contrôle des données entrantes</h2>
+
+      <div class="mesure">
+        <h3>Validation systématique avant traitement</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> Chaque paramètre est décrit par une règle
+          <code>express-validator</code> : type, format et longueur. Un intercepteur commun
+          interrompt la requête en 400 dès qu'une règle échoue, en détaillant le champ fautif.
+          Aucune valeur non validée n'atteint les contrôleurs.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> Le contrôle appliqué par le navigateur est un confort
+          d'usage, jamais une sécurité : il suffit d'envoyer la requête directement pour le
+          contourner. La validation côté serveur est la seule qui compte. Exiger un entier pour
+          un identifiant écarte à elle seule toutes les valeurs exotiques, et le plafonnement
+          des longueurs évite qu'un champ ne serve à saturer la mémoire ou le stockage.
+        </p>
+      </div>
+
+      <div class="mesure">
+        <h3>Adresses e-mail des artisans jamais exposées</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> La colonne <code>email</code> est exclue par défaut
+          de toutes les réponses de l'API, au niveau du modèle. Seul le contrôleur du
+          formulaire lève cette restriction, le temps de connaître le destinataire du message
+          côté serveur.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> Une adresse publiée dans une réponse JSON est moissonnée
+          en quelques heures par les robots de collecte. Le visiteur écrit à l'API, qui écrit à
+          l'artisan : à aucun moment l'adresse ne transite par le navigateur. Le choix
+          d'exclure la colonne par défaut, plutôt que de la retirer réponse par réponse,
+          garantit qu'un futur point d'entrée ne la divulguera pas par oubli.
+        </p>
+      </div>
+
+      <h2 id="s4-4">4.4 Protection du formulaire de contact</h2>
+
+      <div class="mesure">
+        <h3>Neutralisation de l'injection d'en-tête SMTP</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> Les retours à la ligne sont retirés de l'objet et du
+          nom de l'expéditeur avant construction du message.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> Un objet contenant un retour à la ligne suivi de
+          <code>Bcc: victime@exemple.fr</code> ajouterait un en-tête au message. Le formulaire
+          deviendrait un relais de spam anonyme, envoyé depuis un serveur légitime, ce qui
+          exposerait le domaine de la Région à un blocage.
+        </p>
+      </div>
+
+      <div class="mesure">
+        <h3>Échappement du contenu inséré dans l'e-mail</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> Tout contenu saisi est échappé avant insertion dans
+          le corps HTML du message envoyé à l'artisan.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> Sans cette précaution, un visiteur pourrait injecter du
+          HTML dans un message reçu par un tiers : lien maquillé, faux formulaire, image de
+          traçage. Le destinataire est ici une victime potentielle qu'il faut protéger au même
+          titre que l'utilisateur du site.
+        </p>
+      </div>
+
+      <div class="mesure">
+        <h3>Piège à robots</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> Le formulaire comporte un champ supplémentaire,
+          retiré de l'affichage, du parcours clavier et de l'arbre d'accessibilité. Un humain
+          ne peut pas le remplir. Lorsqu'il l'est, le serveur répond un succès sans envoyer
+          quoi que ce soit.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> Il écarte les robots de spam sans imposer de CAPTCHA, dont
+          le cahier des charges d'accessibilité s'accommoderait mal. Le faux succès est
+          délibéré : répondre « champ interdit » apprendrait au robot quel champ laisser vide
+          au prochain passage.
+        </p>
+      </div>
+
+      <div class="mesure">
+        <h3>Redirection des messages en démonstration</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> Quand la variable <code>MAIL_REDIRECT_TO</code> est
+          renseignée, tous les messages y sont envoyés au lieu de partir vers l'adresse de
+          l'artisan, et le corps du message rappelle le destinataire réel.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> Les adresses du jeu d'essai sont fictives et pourraient
+          appartenir à des personnes réelles. Envoyer des messages de test à des inconnus
+          serait à la fois inutile et contraire au respect des personnes. La fonctionnalité
+          reste pleinement démontrable.
+        </p>
+      </div>
+    </section>
+
+    <section class="page">
+      <h2 id="s4-5">4.5 En-têtes HTTP et configuration</h2>
+
+      <div class="mesure">
+        <h3>En-têtes de sécurité positionnés par Helmet</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> Le module Helmet est monté en tout premier, avant
+          toute logique métier.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> Il pose une douzaine d'en-têtes, dont trois jouent un rôle
+          direct ici : <code>X-Content-Type-Options: nosniff</code> interdit au navigateur de
+          deviner le type d'un contenu, ce qui empêche de faire exécuter un fichier déguisé ;
+          <code>X-Frame-Options</code> interdit l'insertion du site dans une iframe et donc le
+          clickjacking, où un visiteur croit cliquer sur un élément alors qu'il en actionne un
+          autre ; <code>Strict-Transport-Security</code> impose HTTPS pour les visites
+          suivantes, ce qui coupe les tentatives de rétrogradation vers HTTP.
+        </p>
+      </div>
+
+      <div class="mesure">
+        <h3>Suppression de la signature technique</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> L'en-tête <code>X-Powered-By: Express</code> est
+          désactivé.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> Annoncer sa pile technique facilite le travail de
+          reconnaissance d'un attaquant, qui n'a plus qu'à chercher les failles connues de la
+          version en question. Ce n'est pas une protection en soi, mais un renseignement
+          gratuit qu'il est inutile d'offrir.
+        </p>
+      </div>
+
+      <div class="mesure">
+        <h3>Plafonnement de la taille des requêtes</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> Le corps des requêtes JSON est limité à 10 kilooctets.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> Le formulaire le plus lourd du site pèse moins de trois
+          kilooctets. Au-delà, il s'agit d'une tentative de saturation de la mémoire du
+          serveur, forme simple de déni de service.
+        </p>
+      </div>
+
+      <h2 id="s4-6">4.6 Gestion des erreurs et des secrets</h2>
+
+      <div class="mesure">
+        <h3>Traitement centralisé des erreurs</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> Toutes les erreurs aboutissent à un intercepteur
+          unique. Les erreurs de Sequelize y sont converties en un message neutre, et la pile
+          d'appels n'est jointe qu'en développement. Le détail technique part dans les journaux
+          du serveur.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> Un message d'erreur brut de la base révèle les noms des
+          tables et des colonnes, parfois la requête elle-même : c'est une carte du système
+          offerte à l'attaquant. Le développeur conserve l'information là où elle lui est
+          utile, dans les journaux, sans la publier.
+        </p>
+      </div>
+
+      <div class="mesure">
+        <h3>Secrets hors du dépôt</h3>
+        <p class="mesure__oeuvre">
+          <strong>Mise en œuvre.</strong> Aucun identifiant n'apparaît dans le code. Tout passe
+          par des variables d'environnement, et les fichiers <code>.env</code> sont exclus du
+          dépôt. Seuls les modèles <code>.env.example</code>, sans valeur, sont publiés. Les
+          variables indispensables sont vérifiées au démarrage : l'API refuse de se lancer si
+          l'une manque.
+        </p>
+        <p class="mesure__interet">
+          <strong>Intérêt.</strong> Un secret publié dans un dépôt le reste : même supprimé, il
+          demeure dans l'historique Git, et les robots qui scrutent les dépôts publics le
+          relèvent en quelques minutes. La vérification au démarrage évite par ailleurs de
+          faire tourner un service à moitié configuré, situation propice aux comportements
+          imprévus.
+        </p>
+      </div>
+
+      <h2 id="s4-7">4.7 Vérification par les tests</h2>
+      <p>
+        Les protections ont été éprouvées et non seulement écrites. Une série de 31 contrôles
+        automatisés couvre le fonctionnement et la sécurité de l'API. Les résultats obtenus :
+      </p>
+      <table>
+        <thead><tr><th>Contrôle</th><th>Attendu</th><th>Obtenu</th></tr></thead>
+        <tbody>
+          <tr><td>Requête sans clé d'API</td><td>Refus 401</td><td class="ok">Conforme</td></tr>
+          <tr><td>Requête avec une clé erronée</td><td>Refus 401</td><td class="ok">Conforme</td></tr>
+          <tr><td>Injection SQL dans la recherche</td><td>Traitée comme du texte, aucun résultat, aucune erreur serveur</td><td class="ok">Conforme</td></tr>
+          <tr><td>Injection dans un identifiant</td><td>Rejet 400</td><td class="ok">Conforme</td></tr>
+          <tr><td>Recherche sur le joker <code>%</code></td><td>Aucun résultat</td><td class="ok">Conforme</td></tr>
+          <tr><td>Adresse e-mail dans les réponses</td><td>Aucune</td><td class="ok">Conforme</td></tr>
+          <tr><td>En-tête <code>X-Powered-By</code></td><td>Absent</td><td class="ok">Conforme</td></tr>
+          <tr><td>En-têtes de sécurité</td><td>Présents</td><td class="ok">Conforme</td></tr>
+          <tr><td>Écriture avec le compte applicatif</td><td>Refusée par MySQL</td><td class="ok">Conforme</td></tr>
+          <tr><td>Champ piège rempli</td><td>Faux succès, aucun envoi</td><td class="ok">Conforme</td></tr>
+        </tbody>
+      </table>
+      <p class="resultat">31 contrôles exécutés, 31 conformes.</p>
+    </section>
+
+    <!-- ================= 5. VEILLE ================= -->
+    <section class="page">
+      <h1 id="s5" class="titre-section">5. Veille de sécurité</h1>
+
+      <h2 id="s5-1">5.1 Méthode et sources</h2>
+      <p>
+        La veille n'a pas été menée en une fois à la fin du projet, mais à chaque ajout de
+        dépendance et avant la livraison.
+      </p>
+      <table>
+        <thead><tr><th>Source</th><th>Usage</th><th>Fréquence</th></tr></thead>
+        <tbody>
+          <tr><td>GitHub Advisory Database</td><td>Base de référence des failles des paquets npm, consultée pour chaque alerte</td><td>À chaque alerte</td></tr>
+          <tr><td><code>npm audit</code></td><td>Analyse automatique de l'arbre des dépendances</td><td>À chaque installation</td></tr>
+          <tr><td>OWASP Top 10</td><td>Grille de relecture du code</td><td>À chaque fonctionnalité</td></tr>
+          <tr><td>MDN Web Docs</td><td>Comportement réel des en-têtes HTTP et de CORS</td><td>Ponctuel</td></tr>
+          <tr><td>Bulletins du CERT-FR (ANSSI)</td><td>Alertes générales sur l'écosystème Node.js</td><td>Hebdomadaire</td></tr>
+        </tbody>
+      </table>
+      <p class="encadre-info">
+        <strong>Principe retenu.</strong> Une alerte n'est jamais traitée mécaniquement. Chaque
+        vulnérabilité est lue dans son avis d'origine, puis confrontée à l'usage qu'en fait
+        réellement le projet. C'est précisément ce qui a évité d'appliquer un correctif
+        beaucoup plus dangereux que la faille elle-même.
+      </p>
+
+      <h2 id="s5-2">5.2 Vulnérabilités trouvées pendant le projet</h2>
+
+      <div class="faille">
+        <h3>Cas n° 1 : contournement de protection CSRF dans React Router</h3>
+        <table class="fiche-faille">
+          <tr><th>Référence</th><td>GHSA-qwww-vcr4-c8h2</td></tr>
+          <tr><th>Paquet</th><td><code>react-router</code> 7.12.0 à 8.2.0, via <code>react-router-dom</code></td></tr>
+          <tr><th>Gravité</th><td>Élevée</td></tr>
+          <tr><th>Détection</th><td><code>npm audit</code>, à l'installation du routeur</td></tr>
+        </table>
+
+        <p>
+          <strong>Nature de la faille.</strong> En mode RSC (React Server Components), une
+          requête d'action est exécutée par le serveur <em>avant</em> que le contrôle d'origine
+          ne la rejette avec un code 400. La protection contre le CSRF intervient donc trop
+          tard : l'action a déjà produit ses effets.
+        </p>
+        <p>
+          <strong>Analyse de l'exposition.</strong> Le projet utilise React Router en mode
+          application à page unique, avec un rendu entièrement côté navigateur. Il n'y a ni
+          React Server Components, ni actions serveur, ni rendu côté serveur. Le code
+          vulnérable n'est jamais exécuté : l'application n'est pas exposée.
+        </p>
+        <p>
+          <strong>Le piège du correctif automatique.</strong> La commande
+          <code>npm audit fix --force</code> proposait de revenir à la version 7.11.0. Cette
+          version a été installée puis auditée pour vérification. Résultat : quatorze
+          vulnérabilités de gravité élevée, parmi lesquelles une exécution de code à distance
+          non authentifiée, plusieurs XSS stockées ou par redirection ouverte, et deux dénis de
+          service non authentifiés.
+        </p>
+        <p class="encadre-alerte">
+          Le correctif recommandé par l'outil aurait remplacé une faille inexploitable dans
+          notre contexte par quatorze failles réellement exploitables sur une application de ce
+          type.
+        </p>
+        <p>
+          <strong>Décision.</strong> Conserver la version 7.18.2, la plus récente, qui corrige
+          les quatorze failles précédentes et ne laisse subsister que celle du mode RSC,
+          inatteignable ici. Un suivi de l'avis reste à assurer : une version corrigeant ce
+          mode devra être installée dès sa publication.
+        </p>
+        <p>
+          <strong>Enseignement.</strong> Le nombre de lignes affichées par un audit ne mesure
+          pas le risque réel. Une faille se juge sur trois critères : le code vulnérable est-il
+          présent, est-il atteignable depuis l'extérieur, et le correctif proposé n'introduit-il
+          pas pire.
+        </p>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="faille">
+        <h3>Cas n° 2 : dépassement de tampon dans uuid, via Sequelize</h3>
+        <table class="fiche-faille">
+          <tr><th>Référence</th><td>GHSA-w5hq-g745-h8pq</td></tr>
+          <tr><th>Paquet</th><td><code>uuid</code> antérieur à 11.1.1, dépendance indirecte de <code>sequelize</code></td></tr>
+          <tr><th>Gravité</th><td>Modérée</td></tr>
+          <tr><th>Détection</th><td><code>npm audit</code> sur le dossier de l'API</td></tr>
+        </table>
+
+        <p>
+          <strong>Nature de la faille.</strong> Les fonctions <code>v3</code>, <code>v5</code>
+          et <code>v6</code> ne vérifient pas les bornes du tampon qui leur est fourni. Un
+          tampon trop court entraîne une écriture hors limites.
+        </p>
+        <p>
+          <strong>Analyse de l'exposition.</strong> Le projet n'emploie aucun identifiant
+          UUID : les clés primaires sont des entiers auto-incrémentés. Sequelize n'appelle ce
+          paquet que pour ses identifiants internes, sans jamais transmettre de tampon. Le
+          chemin de code vulnérable n'est pas atteint.
+        </p>
+        <p>
+          <strong>Le piège du correctif automatique.</strong> Ici encore, la correction
+          automatique proposait <code>sequelize@3.30.0</code>, soit un retour de trois versions
+          majeures en arrière, incompatible avec l'ensemble du code de l'API.
+        </p>
+        <p>
+          <strong>Correction appliquée.</strong> Plutôt que de toucher à Sequelize, la
+          dépendance indirecte a été forcée vers une version corrigée au moyen du mécanisme
+          <code>overrides</code> de npm :
+        </p>
+        <pre class="code">"overrides": {
+  "uuid": "^11.1.1"
+}</pre>
+        <p>
+          <strong>Vérification.</strong> Après réinstallation, <code>npm ls uuid</code> confirme
+          la résolution vers la version 11.1.1, <code>npm audit</code> ne remonte plus aucune
+          vulnérabilité sur l'API, et les 31 contrôles automatisés passent toujours : la montée
+          de version n'a rien cassé.
+        </p>
+      </div>
+
+      <h3>État des dépendances à la livraison</h3>
+      <table>
+        <thead><tr><th>Périmètre</th><th>Vulnérabilités connues</th><th>Détail</th></tr></thead>
+        <tbody>
+          <tr><td>API</td><td class="ok">0</td><td>uuid corrigé par <code>overrides</code></td></tr>
+          <tr><td>Front</td><td>2, élevées</td><td>Uniquement GHSA-qwww-vcr4-c8h2, code non atteignable en mode application à page unique, aucune version corrigée disponible à ce jour</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="s5-3">5.3 Limite connue et assumée</h2>
+      <p>
+        Le cahier des charges demande que l'accès à l'API soit limité à l'application. La clé
+        d'API répond à cette exigence, mais il faut être lucide sur sa portée réelle :
+        <strong>une clé embarquée dans une application front est lisible</strong>. N'importe
+        quel visiteur peut la relever dans l'onglet réseau de son navigateur. Elle écarte les
+        appels opportunistes et le moissonnage automatisé, mais ne constitue pas un secret au
+        sens cryptographique.
+      </p>
+      <p>La restriction repose donc sur un ensemble de mesures :</p>
+      <ol>
+        <li>la clé d'API, qui filtre les appels non intentionnels ;</li>
+        <li>la politique CORS, qui empêche un autre site d'appeler l'API depuis le navigateur d'un visiteur ;</li>
+        <li>la limitation de débit, qui rend le moissonnage massif impraticable ;</li>
+        <li>le compte de base de données en lecture seule, qui borne les conséquences d'un accès non prévu.</li>
+      </ol>
+      <p>
+        Garder un secret réellement secret supposerait un composant serveur intermédiaire ou
+        une authentification par jeton à durée de vie courte. Ce serait la piste à retenir si
+        la plateforme venait à exposer des données personnelles, ce qui n'est pas le cas ici :
+        toutes les données servies sont publiques par nature.
+      </p>
+    </section>
+
+    <!-- ================= 6. ACCESSIBILITÉ ================= -->
+    <section class="page">
+      <h1 id="s6" class="titre-section">6. Accessibilité et conformité</h1>
+      <p>
+        Le cahier des charges impose la conformité à la norme WCAG 2.1 et le passage du code
+        dans les vérificateurs du W3C. Les points suivants ont été mis en place, puis
+        contrôlés sur le rendu réel.
+      </p>
+
+      <table>
+        <thead><tr><th>Critère WCAG</th><th>Mise en œuvre</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>1.3.1 Information et relations</td>
+            <td>Structure sémantique complète (<code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code>, listes). Le niveau des titres des cartes s'adapte à la page pour ne jamais sauter de niveau.</td>
+          </tr>
+          <tr>
+            <td>1.4.1 Utilisation de la couleur</td>
+            <td>La catégorie active est signalée par un soulignement épais en plus de la couleur. La note est écrite en chiffres à côté des étoiles.</td>
+          </tr>
+          <tr>
+            <td>1.4.3 Contraste minimal</td>
+            <td>Contrastes mesurés sur le rendu. Le badge « artisan du mois » atteignait 4,46:1, sous le seuil de 4,5:1 : la nuance du texte a été assombrie pour le porter à 7,2:1.</td>
+          </tr>
+          <tr>
+            <td>1.4.4 Redimensionnement du texte</td>
+            <td>Tailles en unités relatives, zoom du navigateur non bloqué.</td>
+          </tr>
+          <tr>
+            <td>2.1.1 Clavier</td>
+            <td>Toutes les fonctions sont accessibles au clavier. Ordre de tabulation vérifié : lien d'évitement, logo, catégories, recherche, contenu, pied de page.</td>
+          </tr>
+          <tr>
+            <td>2.4.1 Contournement de blocs</td>
+            <td>Lien d'évitement en premier élément focusable. Il est resté volontairement atteignable au chargement : le focus n'est déplacé qu'aux changements de page suivants.</td>
+          </tr>
+          <tr>
+            <td>2.4.7 Visibilité du focus</td>
+            <td>Contour de focus épais et contrasté sur tous les éléments interactifs, affiché uniquement lors d'une navigation au clavier.</td>
+          </tr>
+          <tr>
+            <td>2.3.3 Animations</td>
+            <td>Le réglage système de réduction des animations est respecté.</td>
+          </tr>
+          <tr>
+            <td>3.1.1 Langue de la page</td>
+            <td>Attribut <code>lang="fr"</code> sur le document.</td>
+          </tr>
+          <tr>
+            <td>3.3.1 et 3.3.2 Erreurs et étiquettes</td>
+            <td>Chaque champ porte une étiquette, les champs obligatoires sont signalés autrement que par la seule couleur, et les erreurs sont affichées sous le champ concerné, dans une région annoncée aux lecteurs d'écran.</td>
+          </tr>
+          <tr>
+            <td>4.1.2 Nom, rôle, valeur</td>
+            <td>Le bouton du menu mobile annonce son état, les cartes portent un libellé complet, les images décoratives sont masquées aux technologies d'assistance.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Validation W3C</h3>
+      <p>
+        Le site étant une application à page unique, le code envoyé par le serveur ne
+        représente pas ce que voit l'internaute. C'est donc le <strong>HTML effectivement
+        rendu dans le navigateur</strong> qui a été soumis au validateur, page par page.
+      </p>
+      <table>
+        <thead><tr><th>Page validée</th><th>Erreurs</th></tr></thead>
+        <tbody>
+          <tr><td>Accueil</td><td class="ok">0</td></tr>
+          <tr><td>Liste d'une catégorie</td><td class="ok">0</td></tr>
+          <tr><td>Fiche artisan</td><td class="ok">0</td></tr>
+          <tr><td>Page 404</td><td class="ok">0</td></tr>
+          <tr><td>Page légale</td><td class="ok">0</td></tr>
+        </tbody>
+      </table>
+      <p>
+        Deux erreurs avaient été relevées lors du premier passage, puis corrigées : React 19
+        ajoutait ses balises de titre et de description sans supprimer celles du document, ce
+        qui produisait des doublons interdits. Les métadonnées sont désormais mises à jour
+        directement dans l'en-tête du document. Une troisième erreur, un saut du niveau de
+        titre <code>h1</code> vers <code>h3</code> sur les pages de liste, a été corrigée en
+        rendant le niveau des titres de cartes adaptable au contexte.
+      </p>
+    </section>
+
+    <!-- ================= 7. LIENS ================= -->
+    <section class="page">
+      <h1 id="s7" class="titre-section">7. Liens et accès</h1>
+
+      <h2>Dépôt GitHub</h2>
+      <p class="encadre-lien">
+        <a href="https://github.com/ZacR13-dev/trouve-ton-artisan">https://github.com/ZacR13-dev/trouve-ton-artisan</a>
+      </p>
+      <p>Le dépôt contient :</p>
+      <ul>
+        <li>le code complet du projet, front et API ;</li>
+        <li>le script de création de la base, <code>database/01-create-database.sql</code> ;</li>
+        <li>le script d'alimentation, <code>database/02-seed-database.sql</code> ;</li>
+        <li>le fichier <code>README.md</code> avec les prérequis, l'installation et le lancement ;</li>
+        <li>la documentation technique dans <code>docs/</code>.</li>
+      </ul>
+
+      <h2>Site en ligne</h2>
+      <p class="encadre-info" id="lien-site">
+        <strong>Adresse du site :</strong> lien à insérer.
+      </p>
+
+      <h2>Organisation du dépôt</h2>
+      <pre class="code">trouve-ton-artisan/
+├── api/                  API REST (Express, Sequelize)
+├── client/               Application React (Vite, Bootstrap, Sass)
+├── database/             Scripts SQL de création et d'alimentation
+├── docs/                 Documentation, captures, dossier
+└── README.md             Prérequis, installation, lancement</pre>
+
+      <h2>Pour reprendre le projet</h2>
+      <p>
+        Les instructions complètes figurent dans le fichier <code>README.md</code> à la racine
+        du dépôt. En résumé : exécuter les deux scripts SQL, renseigner les deux fichiers
+        <code>.env</code> à partir des modèles fournis, puis lancer l'API et le front.
+      </p>
+    </section>
+
+    <script src="numeros-pages.js"></script>
+  </body>
+</html>

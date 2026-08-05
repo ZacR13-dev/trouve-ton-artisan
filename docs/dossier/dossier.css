@@ -1,0 +1,403 @@
+/* =====================================================================
+   Feuille de style du dossier de projet
+   ---------------------------------------------------------------------
+   Le document est pensé pour l'impression au format A4. Les marges, les
+   en-têtes et les pieds de page sont produits par le moteur d'impression
+   (voir docs/dossier/generer-pdf.js) : cette feuille ne gère que la mise
+   en forme du contenu.
+   ===================================================================== */
+
+:root {
+  --bleu: #0074c7;
+  --bleu-fonce: #00497c;
+  --bleu-clair: #f1f8fc;
+  --anthracite: #384050;
+  --rouge: #cd2c2e;
+  --vert: #82b864;
+  --gris-bordure: #d9e4ec;
+  --gris-texte: #5a6472;
+
+  /* Hauteur utile d'une page A4 une fois les marges retirées.
+     Sert au calcul des numéros de page du sommaire. */
+  --hauteur-utile: 259mm;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.55;
+  color: var(--anthracite);
+}
+
+/* --- Sections : chacune démarre sur une nouvelle page --------------- */
+.page,
+.garde {
+  break-before: page;
+  page-break-before: always;
+}
+
+.garde {
+  break-before: auto;
+  page-break-before: auto;
+}
+
+/* --- Page de garde -------------------------------------------------- */
+.garde {
+  height: var(--hauteur-utile);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--bleu-clair);
+  padding: 20mm 15mm;
+}
+
+.garde__logo {
+  width: 105mm;
+  height: auto;
+  margin-bottom: 18mm;
+}
+
+.garde__surtitre {
+  margin: 0 0 3mm;
+  font-size: 13pt;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--bleu);
+}
+
+.garde__titre {
+  margin: 0 0 6mm;
+  font-size: 34pt;
+  font-weight: 800;
+  color: var(--bleu-fonce);
+  line-height: 1.1;
+}
+
+.garde__accroche {
+  margin: 0 0 20mm;
+  font-size: 12pt;
+  color: var(--anthracite);
+}
+
+.garde__bloc {
+  padding: 6mm 12mm;
+  border-top: 3px solid var(--bleu);
+  border-bottom: 3px solid var(--bleu);
+  margin-bottom: 22mm;
+}
+
+.garde__bloc p,
+.garde__pied p {
+  margin: 1mm 0;
+}
+
+.garde__pied {
+  font-size: 12pt;
+}
+
+/* --- Titres --------------------------------------------------------- */
+.titre-section {
+  margin: 0 0 8mm;
+  padding-bottom: 3mm;
+  border-bottom: 3px solid var(--bleu);
+  font-size: 20pt;
+  color: var(--bleu-fonce);
+}
+
+h2 {
+  margin: 8mm 0 3mm;
+  font-size: 14pt;
+  color: var(--bleu-fonce);
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+h3 {
+  margin: 6mm 0 2mm;
+  font-size: 11.5pt;
+  color: var(--bleu);
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+p {
+  margin: 0 0 3mm;
+  text-align: justify;
+}
+
+ul,
+ol {
+  margin: 0 0 4mm;
+  padding-left: 6mm;
+}
+
+li {
+  margin-bottom: 1.5mm;
+}
+
+code {
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 9pt;
+  background: var(--bleu-clair);
+  padding: 0.5mm 1.2mm;
+  border-radius: 2px;
+  color: var(--bleu-fonce);
+}
+
+a {
+  color: var(--bleu);
+}
+
+/* --- Sommaire ------------------------------------------------------- */
+.sommaire {
+  list-style: none;
+  padding: 0;
+  margin-top: 6mm;
+}
+
+.sommaire li {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 2.2mm;
+  font-weight: 600;
+}
+
+.sommaire li.sous {
+  font-weight: 400;
+  padding-left: 7mm;
+  font-size: 10pt;
+  margin-bottom: 1.4mm;
+}
+
+.sommaire a {
+  text-decoration: none;
+  color: var(--anthracite);
+}
+
+/* Ligne de points reliant l'intitulé à son numéro de page. */
+.sommaire li::after {
+  content: '';
+  flex: 1;
+  margin: 0 2mm;
+  border-bottom: 1px dotted var(--gris-bordure);
+  transform: translateY(-1mm);
+}
+
+.sommaire .num {
+  order: 3;
+  color: var(--bleu-fonce);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Tableaux ------------------------------------------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 3mm 0 5mm;
+  font-size: 9.5pt;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+table.petite {
+  font-size: 8.5pt;
+}
+
+th,
+td {
+  border: 1px solid var(--gris-bordure);
+  padding: 1.8mm 2.5mm;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: var(--bleu-clair);
+  color: var(--bleu-fonce);
+  font-weight: 700;
+}
+
+tbody tr:nth-child(even) {
+  background: #fafcfe;
+}
+
+td.ok {
+  color: #2f6b1f;
+  font-weight: 700;
+}
+
+.palette .pastille {
+  display: inline-block;
+  width: 16mm;
+  height: 5mm;
+  border: 1px solid var(--gris-bordure);
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+/* --- Schémas en caractères ------------------------------------------ */
+.schema {
+  background: var(--bleu-clair);
+  border: 1px solid var(--gris-bordure);
+  border-radius: 3px;
+  padding: 4mm;
+  margin: 4mm 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.schema pre {
+  margin: 0;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 7.6pt;
+  line-height: 1.35;
+  white-space: pre;
+  color: var(--anthracite);
+}
+
+.schema .pk {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.schema .fk {
+  color: var(--bleu);
+  font-weight: 700;
+}
+
+pre.code {
+  background: #1e2530;
+  color: #e6edf3;
+  padding: 3.5mm 4mm;
+  border-radius: 3px;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 8.5pt;
+  line-height: 1.45;
+  overflow: hidden;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* --- Galeries de captures ------------------------------------------- */
+.galerie {
+  display: flex;
+  gap: 4mm;
+  margin: 4mm 0 2mm;
+  align-items: flex-start;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.galerie figure {
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.galerie img {
+  width: 100%;
+  height: auto;
+  max-height: 105mm;
+  object-fit: contain;
+  object-position: top;
+  border: 1px solid var(--gris-bordure);
+  border-radius: 2px;
+}
+
+.galerie--quatre img {
+  max-height: 80mm;
+}
+
+.galerie figcaption {
+  margin-top: 1.5mm;
+  font-size: 8.5pt;
+  color: var(--gris-texte);
+}
+
+.legende {
+  font-size: 9pt;
+  color: var(--gris-texte);
+  font-style: italic;
+}
+
+/* --- Blocs de sécurité ---------------------------------------------- */
+.mesure {
+  border-left: 3px solid var(--bleu);
+  padding: 0 0 0 4mm;
+  margin: 0 0 6mm;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.mesure h3 {
+  margin-top: 0;
+}
+
+.mesure__oeuvre,
+.mesure__interet {
+  margin-bottom: 2mm;
+}
+
+.mesure__interet {
+  color: #2c3442;
+}
+
+.faille {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.fiche-faille {
+  width: 100%;
+  margin-bottom: 4mm;
+}
+
+.fiche-faille th {
+  width: 30mm;
+  white-space: nowrap;
+}
+
+/* --- Encadrés -------------------------------------------------------- */
+.encadre-info,
+.encadre-alerte,
+.encadre-lien {
+  padding: 3.5mm 4mm;
+  border-radius: 3px;
+  margin: 3mm 0 5mm;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.encadre-info {
+  background: var(--bleu-clair);
+  border-left: 3px solid var(--bleu);
+}
+
+.encadre-alerte {
+  background: #fdf1f1;
+  border-left: 3px solid var(--rouge);
+}
+
+.encadre-lien {
+  background: var(--bleu-clair);
+  border: 1px solid var(--bleu);
+  text-align: center;
+  font-size: 11pt;
+  word-break: break-all;
+}
+
+.resultat {
+  background: #f2f8ee;
+  border-left: 3px solid var(--vert);
+  padding: 3mm 4mm;
+  font-weight: 700;
+  color: #2f6b1f;
+}
