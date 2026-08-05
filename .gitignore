@@ -1,0 +1,41 @@
+# Dépendances
+node_modules/
+.pnp
+.pnp.js
+
+# Variables d'environnement : ne doivent JAMAIS être versionnées
+# (identifiants de base de données, clé d'API, mot de passe SMTP).
+# Seul le modèle .env.example est publié.
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Build
+dist/
+build/
+*.tsbuildinfo
+
+# Sass
+.sass-cache/
+*.css.map
+
+# Journaux
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Éditeurs et système
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Divers
+coverage/
+.cache/
+*.local
