@@ -1,0 +1,127 @@
+// =====================================================================
+// Cartes d'artisans, note en étoiles et fiche détaillée
+// =====================================================================
+
+@use 'variables' as v;
+
+// --- Carte d'artisan --------------------------------------------------
+.carte-artisan {
+  height: 100%;
+  border: 1px solid v.$gris-bordure;
+  border-radius: v.$rayon;
+  background-color: v.$blanc;
+  box-shadow: v.$ombre-carte;
+  transition: transform v.$transition, box-shadow v.$transition;
+
+  // Le lien couvre toute la carte : c'est lui qui porte le focus, la
+  // carte n'est donc jamais un élément cliquable sans rôle accessible.
+  &:hover,
+  &:focus-within {
+    transform: translateY(-4px);
+    box-shadow: v.$ombre-carte-survol;
+  }
+}
+
+.carte-artisan__lien {
+  display: block;
+  height: 100%;
+  padding: 1.25rem;
+  color: inherit;
+  text-decoration: none;
+
+  &:hover .carte-artisan__nom,
+  &:focus-visible .carte-artisan__nom {
+    text-decoration: underline;
+  }
+}
+
+.carte-artisan__nom {
+  color: v.$bleu-fonce;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.carte-artisan__specialite {
+  display: inline-block;
+  background-color: v.$bleu-clair;
+  color: v.$bleu-fonce;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.2rem 0.625rem;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+}
+
+.carte-artisan__ville {
+  color: v.$gris-texte-secondaire;
+  font-size: 0.9375rem;
+  margin-bottom: 0;
+}
+
+// --- Note en étoiles --------------------------------------------------
+.note {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-bottom: 0.5rem;
+}
+
+.note__etoiles {
+  display: inline-flex;
+  // Les étoiles sont purement décoratives : la note en toutes lettres
+  // est fournie juste à côté pour les lecteurs d'écran.
+  gap: 1px;
+}
+
+.note__etoile {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.note__valeur {
+  font-weight: 700;
+  color: v.$anthracite;
+  font-size: 0.9375rem;
+}
+
+// --- Fiche artisan ----------------------------------------------------
+.fiche-artisan__visuel {
+  width: 100%;
+  height: auto;
+  border-radius: v.$rayon;
+  border: 1px solid v.$gris-bordure;
+  background-color: v.$bleu-clair;
+}
+
+.fiche-artisan__entete {
+  border-bottom: 2px solid v.$bleu-clair;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.fiche-artisan__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  align-items: center;
+  color: v.$gris-texte-secondaire;
+}
+
+.fiche-artisan__site {
+  word-break: break-word;
+}
+
+// --- Artisans du mois -------------------------------------------------
+.artisan-du-mois__badge {
+  display: inline-block;
+  background-color: v.$vert;
+  // Le vert de la charte est clair : le texte reste en anthracite pour
+  // conserver un contraste conforme au niveau AA.
+  color: v.$anthracite;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 0.2rem 0.625rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}

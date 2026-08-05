@@ -20,6 +20,10 @@
   ],
   "author": "Kévin Reis",
   "license": "MIT",
+  "comment_overrides": "Sequelize 6 embarque une version d'uuid affectée par GHSA-w5hq-g745-h8pq. Le correctif automatique de npm proposait de revenir à Sequelize 3, ce qui casserait le projet : la dépendance transitive est donc forcée ici vers une version corrigée. Voir docs/veille-securite.md.",
+  "overrides": {
+    "uuid": "^11.1.1"
+  },
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",

@@ -1,0 +1,55 @@
+// =====================================================================
+// Pied de page : liens légaux et coordonnées de l'antenne de Lyon
+// Identique sur toutes les pages (exigence du cahier des charges).
+// =====================================================================
+
+@use 'variables' as v;
+
+.pied-de-page {
+  flex-shrink: 0;
+  background-color: v.$anthracite;
+  color: v.$blanc;
+  padding-top: 2.5rem;
+  padding-bottom: 1.5rem;
+
+  h2 {
+    color: v.$blanc;
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: v.$blanc;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus-visible {
+      // Le blanc pur reste le meilleur contraste sur ce fond sombre :
+      // on marque le survol par l'épaisseur plutôt que par la couleur.
+      color: v.$blanc;
+      text-decoration-thickness: 3px;
+    }
+  }
+
+  address {
+    font-style: normal;
+    margin-bottom: 0;
+  }
+}
+
+.pied-de-page__liens {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.pied-de-page__mention {
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  font-size: 0.875rem;
+}

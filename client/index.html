@@ -1,0 +1,39 @@
+<!doctype html>
+<!-- L'attribut lang est indispensable : il indique aux lecteurs d'écran
+     la langue à utiliser pour la synthèse vocale, et aux moteurs de
+     recherche la langue du contenu (WCAG 2.1, critère 3.1.1). -->
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Rend le site utilisable sur mobile sans zoom forcé. La valeur
+         de user-scalable n'est pas fixée : interdire le zoom romprait
+         le critère 1.4.4 des WCAG. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="theme-color" content="#0074c7" />
+
+    <!-- Titre et description par défaut. Chaque page les remplace par
+         les siens grâce au composant MetaPage. -->
+    <title>Trouve ton artisan | Région Auvergne-Rhône-Alpes</title>
+    <meta
+      name="description"
+      content="Trouvez un artisan en Auvergne-Rhône-Alpes : bâtiment, services, fabrication, alimentation. Contactez-le directement, réponse sous 48h."
+    />
+
+    <meta name="author" content="Région Auvergne-Rhône-Alpes" />
+    <meta name="robots" content="index, follow" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Message affiché si JavaScript est désactivé. -->
+    <noscript>
+      Ce site nécessite JavaScript pour fonctionner. Merci de l'activer dans les réglages de votre
+      navigateur.
+    </noscript>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

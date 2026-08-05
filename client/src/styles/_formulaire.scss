@@ -1,0 +1,51 @@
+// =====================================================================
+// Formulaire de contact
+// =====================================================================
+
+@use 'variables' as v;
+
+.formulaire-contact {
+  background-color: v.$bleu-clair;
+  border-radius: v.$rayon;
+  padding: 1.5rem;
+
+  @media (min-width: v.$rupture-tablette) {
+    padding: 2rem;
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: v.$anthracite;
+  }
+
+  // Astérisque des champs obligatoires. L'information est aussi portée
+  // par l'attribut « required » et par une mention en toutes lettres :
+  // un symbole seul ne serait pas compris par tous.
+  .champ-obligatoire {
+    color: v.$rouge;
+    font-weight: 700;
+  }
+}
+
+// Champ piège à robots. Il est retiré du flux ET du parcours clavier
+// (tabindex -1) ET de l'arbre d'accessibilité (aria-hidden), pour qu'un
+// utilisateur de lecteur d'écran ne tombe jamais dessus par erreur.
+.champ-piege {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.formulaire-contact__erreur {
+  color: v.$rouge;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.formulaire-contact__aide {
+  color: v.$gris-texte-secondaire;
+  font-size: 0.875rem;
+}

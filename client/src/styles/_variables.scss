@@ -1,0 +1,41 @@
+// =====================================================================
+// Charte graphique de la Région Auvergne-Rhône-Alpes
+// ---------------------------------------------------------------------
+// Les six couleurs proviennent directement du cahier des charges.
+// Elles sont définies ici une seule fois, puis injectées dans Bootstrap
+// et réutilisées par les feuilles de style du projet.
+// =====================================================================
+
+// --- Palette officielle ---------------------------------------------
+$bleu-clair: #f1f8fc; // fonds de section
+$bleu-region: #0074c7; // couleur principale, liens et boutons
+$bleu-fonce: #00497c; // survols, titres, pied de page
+$anthracite: #384050; // texte courant
+$rouge: #cd2c2e; // erreurs et alertes
+$vert: #82b864; // confirmations
+
+// --- Neutres ---------------------------------------------------------
+$blanc: #ffffff;
+$gris-bordure: #d9e4ec;
+$gris-texte-secondaire: #5a6472;
+
+// --- Typographie -----------------------------------------------------
+// La Région utilise « Graphik » sur tous ses supports. Cette police est
+// sous licence commerciale : si les fichiers sont fournis, ils doivent
+// être déposés dans client/public/fonts et déclarés dans _base.scss.
+// La pile ci-dessous assure un rendu très proche à défaut : des
+// linéales neutres de même largeur apparente.
+$police-titres: 'Graphik', 'Archivo', 'Segoe UI', system-ui, -apple-system, sans-serif;
+$police-texte: 'Graphik', 'Archivo', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+// --- Points de rupture -----------------------------------------------
+// Le site est conçu en mobile first : ces valeurs sont des minimums,
+// utilisés uniquement dans des media queries « min-width ».
+$rupture-tablette: 768px;
+$rupture-bureau: 1200px;
+
+// --- Divers ----------------------------------------------------------
+$rayon: 8px;
+$ombre-carte: 0 2px 8px rgba(56, 64, 80, 0.1);
+$ombre-carte-survol: 0 6px 18px rgba(56, 64, 80, 0.18);
+$transition: 0.2s ease-in-out;

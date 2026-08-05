@@ -1,0 +1,131 @@
+// =====================================================================
+// Styles de base : mise en page générale, accessibilité, typographie
+// =====================================================================
+
+@use 'variables' as v;
+
+// --- Structure générale ----------------------------------------------
+// La page occupe au minimum toute la hauteur de la fenêtre et le pied de
+// page reste en bas même sur les pages courtes (404, pages légales).
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.contenu-principal {
+  flex: 1 0 auto;
+}
+
+body {
+  font-family: v.$police-texte;
+  color: v.$anthracite;
+  // Interligne confortable : critère 1.4.12 des WCAG sur l'espacement
+  // du texte, qui améliore nettement le confort de lecture.
+  line-height: 1.6;
+}
+
+// --- Lien d'évitement -------------------------------------------------
+// Premier élément focusable de la page. Invisible tant qu'il n'a pas le
+// focus, il permet aux utilisateurs de clavier et de lecteur d'écran de
+// sauter le menu pour atteindre le contenu (WCAG 2.1, critère 2.4.1).
+.lien-evitement {
+  position: absolute;
+  left: -9999px;
+  z-index: 1100;
+  padding: 0.75rem 1.25rem;
+  background-color: v.$bleu-fonce;
+  color: v.$blanc;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:focus {
+    left: 0.5rem;
+    top: 0.5rem;
+  }
+}
+
+// --- Titres -----------------------------------------------------------
+h1,
+h2,
+h3 {
+  font-family: v.$police-titres;
+  color: v.$bleu-fonce;
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+
+  @media (min-width: v.$rupture-tablette) {
+    font-size: 2.25rem;
+  }
+}
+
+h2 {
+  font-size: 1.375rem;
+  margin-bottom: 1rem;
+
+  @media (min-width: v.$rupture-tablette) {
+    font-size: 1.75rem;
+  }
+}
+
+// --- Sections ---------------------------------------------------------
+.section-claire {
+  background-color: v.$bleu-clair;
+}
+
+.section-espacee {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+
+  @media (min-width: v.$rupture-tablette) {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+// --- Accessibilité ----------------------------------------------------
+// Contenu réservé aux technologies d'assistance : lu à voix haute, mais
+// absent de l'affichage. Sert notamment aux notes en toutes lettres.
+.lecteur-ecran-uniquement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Respecte le réglage système « réduire les animations » (WCAG 2.3.3).
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// --- Indicateur de chargement ----------------------------------------
+.zone-chargement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 12rem;
+  color: v.$gris-texte-secondaire;
+}

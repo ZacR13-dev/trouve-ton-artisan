@@ -1,0 +1,106 @@
+// =====================================================================
+// Styles propres aux pages : accueil, liste, 404, pages légales
+// =====================================================================
+
+@use 'variables' as v;
+
+// --- Bandeau d'accueil ------------------------------------------------
+.banniere {
+  background-color: v.$bleu-clair;
+  padding: 2.5rem 0;
+  text-align: center;
+
+  @media (min-width: v.$rupture-tablette) {
+    padding: 4rem 0;
+  }
+
+  p {
+    max-width: 42rem;
+    margin: 0 auto;
+    font-size: 1.0625rem;
+
+    @media (min-width: v.$rupture-tablette) {
+      font-size: 1.1875rem;
+    }
+  }
+}
+
+// --- Étapes « Comment trouver mon artisan ? » -------------------------
+.etape {
+  height: 100%;
+  background-color: v.$blanc;
+  border: 1px solid v.$gris-bordure;
+  border-radius: v.$rayon;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+
+.etape__numero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background-color: v.$bleu-region;
+  color: v.$blanc;
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.etape__texte {
+  margin-bottom: 0;
+  color: v.$anthracite;
+}
+
+// --- En-tête des pages de liste ---------------------------------------
+.entete-liste {
+  border-bottom: 2px solid v.$bleu-clair;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.entete-liste__compteur {
+  color: v.$gris-texte-secondaire;
+  margin-bottom: 0;
+}
+
+// --- Aucun résultat ---------------------------------------------------
+.aucun-resultat {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: v.$bleu-clair;
+  border-radius: v.$rayon;
+}
+
+// --- Page 404 et pages légales ---------------------------------------
+.page-simple {
+  text-align: center;
+  padding: 3rem 1rem 4rem;
+}
+
+.page-simple__illustration {
+  max-width: 18rem;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 2rem;
+  display: block;
+}
+
+.page-simple__code {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: v.$bleu-region;
+  margin-bottom: 0.5rem;
+
+  @media (min-width: v.$rupture-tablette) {
+    font-size: 5.5rem;
+  }
+}
+
+.page-legale {
+  padding: 2.5rem 0 4rem;
+  min-height: 40vh;
+}

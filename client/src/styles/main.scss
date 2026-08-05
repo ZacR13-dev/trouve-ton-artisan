@@ -1,0 +1,52 @@
+// =====================================================================
+// Feuille de style principale
+// ---------------------------------------------------------------------
+// Ordre imposé par Sass : les modules configurés (@use ... with) doivent
+// être chargés avant tout le reste.
+//   1. nos variables de charte ;
+//   2. Bootstrap, configuré avec ces variables ;
+//   3. nos styles propres, qui s'appuient sur les deux précédents.
+// =====================================================================
+
+@use 'variables' as v;
+
+// --- Bootstrap configuré aux couleurs de la Région -------------------
+// Surcharger les variables de Bootstrap plutôt que réécrire ses règles
+// évite les conflits de spécificité et allège la feuille finale.
+@use 'bootstrap/scss/bootstrap' with (
+  $primary: v.$bleu-region,
+  $secondary: v.$bleu-fonce,
+  $danger: v.$rouge,
+  $success: v.$vert,
+  $dark: v.$anthracite,
+  $light: v.$bleu-clair,
+
+  $body-color: v.$anthracite,
+  $body-bg: v.$blanc,
+
+  $font-family-sans-serif: v.$police-texte,
+  $headings-font-family: v.$police-titres,
+  $headings-font-weight: 700,
+
+  $border-radius: v.$rayon,
+  $border-color: v.$gris-bordure,
+
+  // Le soulignement des liens est conservé au survol et au focus :
+  // la couleur seule ne doit jamais être le seul indicateur d'un lien
+  // (WCAG 2.1, critère 1.4.1 « Utilisation de la couleur »).
+  $link-decoration: underline,
+
+  // Contour de focus épais et contrasté, indispensable à la navigation
+  // au clavier (WCAG 2.1, critère 2.4.7 « Visibilité du focus »).
+  $focus-ring-width: 3px,
+  $focus-ring-opacity: 1,
+  $focus-ring-color: v.$bleu-fonce
+);
+
+// --- Styles du projet -------------------------------------------------
+@use 'base';
+@use 'header';
+@use 'footer';
+@use 'artisan';
+@use 'pages';
+@use 'formulaire';

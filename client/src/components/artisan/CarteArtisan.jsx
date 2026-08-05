@@ -1,0 +1,49 @@
+/**
+ * Carte d'un artisan, utilisée sur la page d'accueil et sur les pages de
+ * liste. Elle affiche les quatre informations demandées par le cahier
+ * des charges : nom, note sur cinq, spécialité et localisation.
+ *
+ * La carte entière est cliquable, mais c'est bien un lien qui l'englobe
+ * et non un gestionnaire de clic sur un bloc : la navigation au clavier
+ * et l'ouverture dans un nouvel onglet fonctionnent normalement.
+ */
+
+import { Link } from 'react-router-dom';
+import { NoteEtoiles } from './NoteEtoiles.jsx';
+
+/**
+ * @param {object} props
+ * @param {object} props.artisan Artisan renvoyé par l'API.
+ * @param {boolean} [props.afficherBadge] Affiche la mention « Artisan du
+ *   mois », utilisée uniquement sur la page d'accueil.
+ */
+export function CarteArtisan({ artisan, afficherBadge = false }) {
+  return (
+    <article className="carte-artisan">
+      <Link
+        to={`/artisan/${artisan.id}`}
+        className="carte-artisan__lien"
+        // Le libellé complet évite une liste de liens « en savoir plus »
+        // indiscernables pour un utilisateur de lecteur d'écran.
+        aria-label={`Voir la fiche de ${artisan.nom}, ${artisan.specialite?.nom ?? 'artisan'} à ${artisan.ville}`}
+      >
+        {afficherBadge && artisan.artisanDuMois && (
+          <span className="artisan-du-mois__badge">Artisan du mois</span>
+        )}
+
+        <h3 className="carte-artisan__nom">{artisan.nom}</h3>
+
+        <NoteEtoiles note={artisan.note} />
+
+        {artisan.specialite && (
+          <span className="carte-artisan__specialite">{artisan.specialite.nom}</span>
+        )}
+
+        <p className="carte-artisan__ville">
+          <span className="lecteur-ecran-uniquement">Localisation : </span>
+          {artisan.ville}
+        </p>
+      </Link>
+    </article>
+  );
+}
