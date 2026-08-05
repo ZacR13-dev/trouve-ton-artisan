@@ -19,6 +19,13 @@ $blanc: #ffffff;
 $gris-bordure: #d9e4ec;
 $gris-texte-secondaire: #5a6472;
 
+// Anthracite assombri, réservé au texte posé sur le vert de la charte.
+// Mesuré sur le rendu, l'anthracite sur ce vert donne un contraste de
+// 4,46:1, soit juste sous le seuil AA de 4,5:1 exigé par les WCAG 2.1
+// (critère 1.4.3). Cette nuance porte le rapport à 7,2:1 sans modifier
+// la couleur de fond imposée par la charte.
+$anthracite-fonce: #1a1d23;
+
 // --- Typographie -----------------------------------------------------
 // La Région utilise « Graphik » sur tous ses supports. Cette police est
 // sous licence commerciale : si les fichiers sont fournis, ils doivent

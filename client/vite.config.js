@@ -24,7 +24,7 @@ export default defineConfig({
          * code de Bootstrap et non du nôtre : ils sont masqués pour
          * garder une sortie de compilation lisible.
          */
-        silenceDeprecations: ['import', 'global-builtin', 'color-functions', 'mixed-decls']
+        silenceDeprecations: ['import', 'global-builtin', 'color-functions', 'if-function']
       }
     }
   }

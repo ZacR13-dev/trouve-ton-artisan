@@ -75,7 +75,11 @@ export function ListeArtisans() {
         {chargement && <Chargement message="Chargement des artisans..." />}
         {erreur && <MessageErreur erreur={erreur} />}
 
-        {artisans && artisans.length > 0 && <GrilleArtisans artisans={artisans} />}
+        {/* Les cartes suivent directement le h1 de la page : leur titre
+            doit donc être un h2 pour ne pas sauter de niveau. */}
+        {artisans && artisans.length > 0 && (
+          <GrilleArtisans artisans={artisans} niveauTitre={2} />
+        )}
 
         {artisans && artisans.length === 0 && (
           <div className="aucun-resultat">

@@ -116,9 +116,9 @@
 .artisan-du-mois__badge {
   display: inline-block;
   background-color: v.$vert;
-  // Le vert de la charte est clair : le texte reste en anthracite pour
-  // conserver un contraste conforme au niveau AA.
-  color: v.$anthracite;
+  // Le vert de la charte est clair : le texte utilise l'anthracite
+  // assombri pour atteindre le contraste AA (voir _variables.scss).
+  color: v.$anthracite-fonce;
   font-size: 0.8125rem;
   font-weight: 700;
   padding: 0.2rem 0.625rem;

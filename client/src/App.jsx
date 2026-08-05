@@ -20,17 +20,28 @@ import { NonTrouvee } from './pages/NonTrouvee.jsx';
 export function App() {
   const { pathname, search } = useLocation();
   const contenuPrincipal = useRef(null);
+  const adressePrecedente = useRef(null);
 
   /**
    * Dans une application à page unique, changer de route ne recharge pas
    * le document : sans intervention, l'utilisateur reste au milieu de la
    * page précédente et le lecteur d'écran ne signale aucun changement.
-   * On remonte donc en haut et on donne le focus à la zone de contenu à
-   * chaque navigation.
+   * On remonte donc en haut et on donne le focus à la zone de contenu.
+   *
+   * Ce déplacement est volontairement ignoré au tout premier affichage :
+   * si le focus était placé sur le contenu dès l'arrivée sur le site, la
+   * première tabulation atteindrait le contenu et non le lien
+   * d'évitement, qui perdrait alors toute utilité.
    */
   useEffect(() => {
-    window.scrollTo(0, 0);
-    contenuPrincipal.current?.focus();
+    const adresse = pathname + search;
+
+    if (adressePrecedente.current !== null && adressePrecedente.current !== adresse) {
+      window.scrollTo(0, 0);
+      contenuPrincipal.current?.focus();
+    }
+
+    adressePrecedente.current = adresse;
   }, [pathname, search]);
 
   return (

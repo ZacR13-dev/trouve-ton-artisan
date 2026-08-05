@@ -93,6 +93,27 @@ h2 {
 }
 
 // --- Accessibilité ----------------------------------------------------
+
+// Contour de focus commun à tous les éléments interactifs. Le contour
+// par défaut des navigateurs, fin et peu contrasté, passe facilement
+// inaperçu sur fond clair : celui-ci est épais, contrasté et décollé de
+// l'élément (WCAG 2.1, critères 2.4.7 et 2.4.11).
+// :focus-visible ne se déclenche qu'au clavier, l'apparence au clic à la
+// souris reste donc inchangée.
+:focus-visible {
+  outline: 3px solid v.$bleu-fonce;
+  outline-offset: 2px;
+  // Le contour ne doit jamais être rogné par un conteneur.
+  border-radius: 2px;
+}
+
+// Le conteneur du contenu principal reçoit le focus par programme lors
+// des changements de page : il ne doit pas afficher de contour pour
+// autant, le changement de page étant déjà annoncé par le titre.
+main:focus,
+main:focus-visible {
+  outline: none;
+}
 // Contenu réservé aux technologies d'assistance : lu à voix haute, mais
 // absent de l'affichage. Sert notamment aux notes en toutes lettres.
 .lecteur-ecran-uniquement {

@@ -16,8 +16,17 @@ import { NoteEtoiles } from './NoteEtoiles.jsx';
  * @param {object} props.artisan Artisan renvoyé par l'API.
  * @param {boolean} [props.afficherBadge] Affiche la mention « Artisan du
  *   mois », utilisée uniquement sur la page d'accueil.
+ * @param {2|3} [props.niveauTitre] Niveau du titre portant le nom de
+ *   l'artisan. La hiérarchie des titres ne doit jamais sauter de niveau :
+ *   sur l'accueil les cartes suivent un h2 de section et sont donc en h3,
+ *   tandis que sur une page de liste elles suivent directement le h1 et
+ *   doivent être en h2 (WCAG 2.1, critère 1.3.1).
  */
-export function CarteArtisan({ artisan, afficherBadge = false }) {
+export function CarteArtisan({ artisan, afficherBadge = false, niveauTitre = 3 }) {
+  // Une variable dont le nom commence par une majuscule est interprétée
+  // par JSX comme un composant : elle permet ici de choisir la balise.
+  const TitreArtisan = `h${niveauTitre}`;
+
   return (
     <article className="carte-artisan">
       <Link
@@ -31,7 +40,7 @@ export function CarteArtisan({ artisan, afficherBadge = false }) {
           <span className="artisan-du-mois__badge">Artisan du mois</span>
         )}
 
-        <h3 className="carte-artisan__nom">{artisan.nom}</h3>
+        <TitreArtisan className="carte-artisan__nom">{artisan.nom}</TitreArtisan>
 
         <NoteEtoiles note={artisan.note} />
 
