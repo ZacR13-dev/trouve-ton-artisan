@@ -2,6 +2,8 @@
 
 Plateforme de mise en relation entre les particuliers et les artisans de la région Auvergne-Rhône-Alpes. Elle permet de rechercher un artisan par catégorie ou par nom, de consulter sa fiche, et de le contacter directement par formulaire.
 
+![Page d'accueil du site Trouve ton artisan](docs/captures/accueil-bureau.png)
+
 Projet réalisé dans le cadre du devoir bilan du titre professionnel Développeur Web et Web Mobile.
 
 ## Sommaire
@@ -211,6 +213,8 @@ Le détail de chaque mesure et la veille menée pendant le projet figurent dans 
 |---|---|
 | [`docs/base-de-donnees.md`](docs/base-de-donnees.md) | Règles de gestion, dictionnaire des données, MCD, MLD, MPD |
 | [`docs/veille-securite.md`](docs/veille-securite.md) | Veille, vulnérabilités trouvées et traitées, mesures de sécurité |
+| [`docs/conformite-cahier-des-charges.md`](docs/conformite-cahier-des-charges.md) | Relecture point par point du cahier des charges |
+| [`docs/dossier/`](docs/dossier) | Dossier de projet au format PDF et son script de génération |
 
 ## Auteur
 

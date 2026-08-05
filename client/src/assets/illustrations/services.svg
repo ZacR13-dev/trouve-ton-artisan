@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img">
+  <rect width="400" height="300" fill="#f1f8fc" />
+
+  <g stroke="#d9e4ec" stroke-width="1">
+    <path d="M0 60h400M0 120h400M0 180h400M0 240h400" />
+    <path d="M80 0v300M160 0v300M240 0v300M320 0v300" />
+  </g>
+
+  <circle cx="200" cy="150" r="86" fill="#0074c7" />
+
+  <!-- Ciseaux -->
+  <g stroke="#ffffff" stroke-width="9" stroke-linecap="round" fill="none">
+    <path d="M172 108l44 62" />
+    <path d="M228 108l-44 62" />
+    <circle cx="172" cy="186" r="15" />
+    <circle cx="228" cy="186" r="15" />
+  </g>
+  <circle cx="200" cy="150" r="6" fill="#ffffff" />
+</svg>

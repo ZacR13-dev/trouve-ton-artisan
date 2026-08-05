@@ -1,0 +1,22 @@
+# Normalise les fins de ligne : LF dans le dépôt, conversion locale
+# selon le système. Sans cela, un même fichier apparaît modifié selon
+# qu'il est ouvert sous Windows ou sous Linux.
+* text=auto eol=lf
+
+# Fichiers binaires : aucune conversion.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+
+# Scripts propres à Windows, qui exigent des fins de ligne CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Exclus de l'archive téléchargeable et des statistiques de langage.
+docs/captures/* linguist-documentation
+package-lock.json linguist-generated

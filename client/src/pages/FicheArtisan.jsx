@@ -1,11 +1,3 @@
-/**
- * Fiche complète d'un artisan.
- *
- * Elle réunit les éléments exigés par le cahier des charges : nom,
- * image, note en étoiles, spécialité, localisation, rubrique « À propos »,
- * formulaire de contact et site web le cas échéant.
- */
-
 import { Link, useParams } from 'react-router-dom';
 import { recupererArtisan } from '../services/api.js';
 import { useRequeteApi } from '../hooks/useRequeteApi.js';
@@ -26,7 +18,7 @@ export function FicheArtisan() {
     erreur
   } = useRequeteApi((signal) => recupererArtisan(id, signal), [id]);
 
-  // Identifiant inexistant ou invalide : la page 404 du site s'affiche,
+  // Identifiant inexistant ou invalide : on affiche la page 404 du site
   // plutôt qu'un message d'erreur au milieu d'une page vide.
   if (erreur?.statut === 404 || erreur?.statut === 400) {
     return <NonTrouvee />;
@@ -56,8 +48,6 @@ export function FicheArtisan() {
       />
 
       <div className="container section-espacee">
-        {/* Fil d'ariane : situe la page dans l'arborescence, pour
-            l'utilisateur comme pour les moteurs de recherche. */}
         <nav aria-label="Fil d'ariane" className="mb-4">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
@@ -104,13 +94,9 @@ export function FicheArtisan() {
 
             {artisan.siteWeb && (
               <p className="fiche-artisan__site">
-                <a
-                  href={artisan.siteWeb}
-                  target="_blank"
-                  // noopener et noreferrer empêchent la page ouverte de
-                  // manipuler celle d'origine via window.opener.
-                  rel="noopener noreferrer"
-                >
+                {/* noopener et noreferrer empêchent la page ouverte de
+                    manipuler celle d'origine via window.opener. */}
+                <a href={artisan.siteWeb} target="_blank" rel="noopener noreferrer">
                   Visiter le site web de {artisan.nom}
                   <span className="lecteur-ecran-uniquement"> (nouvelle fenêtre)</span>
                 </a>

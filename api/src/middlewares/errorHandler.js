@@ -1,37 +1,21 @@
-/**
- * Gestion centralisée des erreurs et des routes inconnues.
- *
- * Toutes les erreurs de l'application aboutissent ici. Avec Express 5,
- * les rejets de promesses des gestionnaires asynchrones sont transmis
- * automatiquement, ce qui évite les try/catch répétitifs et surtout les
- * erreurs silencieusement avalées.
- */
-
 import { config } from '../config/env.js';
 import { ApiError } from '../utils/ApiError.js';
 
-/**
- * Route inexistante : renvoie un 404 au format JSON plutôt que la page
- * HTML par défaut d'Express.
- * @type {import('express').RequestHandler}
- */
+/** Route inexistante : un 404 en JSON plutôt que la page HTML d'Express. */
 export function routeInconnue(req, res, next) {
   next(ApiError.notFound(`La route ${req.method} ${req.originalUrl} n'existe pas.`));
 }
 
 /**
- * Gestionnaire d'erreurs final.
+ * Gestionnaire d'erreurs final. Toutes les erreurs de l'application
+ * aboutissent ici, y compris les rejets de promesses des gestionnaires
+ * asynchrones, transmis automatiquement depuis Express 5.
  *
- * Règle de sécurité : le client ne reçoit jamais de détail technique
- * (pile d'appels, requête SQL, nom de table). Ces informations partent
- * dans les journaux du serveur, où elles sont utiles au développeur sans
- * renseigner un attaquant.
- *
- * @type {import('express').ErrorRequestHandler}
+ * Le client ne reçoit jamais de détail technique : pile d'appels, requête
+ * SQL ou nom de table dessineraient une carte du système. Ces
+ * informations partent dans les journaux du serveur.
  */
 export function gestionnaireErreurs(err, req, res, next) {
-  // Express impose la signature à quatre paramètres pour reconnaître un
-  // gestionnaire d'erreurs, même si `next` n'est pas utilisé ensuite.
   if (res.headersSent) {
     return next(err);
   }
@@ -40,8 +24,6 @@ export function gestionnaireErreurs(err, req, res, next) {
   let message = err.message ?? 'Erreur interne du serveur.';
   const details = err.details;
 
-  // Erreurs remontées par Sequelize : elles ne doivent jamais être
-  // renvoyées telles quelles, elles exposeraient le schéma de la base.
   if (err.name?.startsWith('Sequelize')) {
     console.error('[erreur base de données]', err.name, err.message);
     statut = 503;
@@ -60,7 +42,6 @@ export function gestionnaireErreurs(err, req, res, next) {
     corps.details = details;
   }
 
-  // La pile d'appels n'est exposée qu'en développement.
   if (!config.isProduction && statut >= 500) {
     corps.stack = err.stack;
   }

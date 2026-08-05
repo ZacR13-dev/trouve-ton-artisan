@@ -1,13 +1,10 @@
-/**
- * Page 404.
- *
- * Elle s'affiche pour toute adresse qui ne correspond à aucune page du
- * site, ainsi que pour une catégorie ou un artisan inexistant.
- */
-
 import { Link } from 'react-router-dom';
 import { MetaPage } from '../components/ui/MetaPage.jsx';
 
+/**
+ * Affichée pour toute adresse inconnue, ainsi que pour une catégorie ou
+ * un artisan qui n'existe pas.
+ */
 export function NonTrouvee() {
   return (
     <>
@@ -17,8 +14,6 @@ export function NonTrouvee() {
       />
 
       <div className="container page-simple">
-        {/* Illustration décorative : le message est porté par le texte
-            qui suit, l'image n'apporte pas d'information propre. */}
         <svg
           className="page-simple__illustration"
           viewBox="0 0 240 160"

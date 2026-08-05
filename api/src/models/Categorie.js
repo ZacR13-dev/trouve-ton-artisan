@@ -1,11 +1,7 @@
-/**
- * Modèle Categorie : les quatre familles d'artisanat du menu principal.
- * Il reflète la table `categorie` créée par 01-create-database.sql.
- */
-
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/database.js';
 
+/** Les quatre familles d'artisanat affichées dans le menu principal. */
 export const Categorie = sequelize.define(
   'Categorie',
   {
@@ -20,7 +16,5 @@ export const Categorie = sequelize.define(
       unique: true
     }
   },
-  {
-    tableName: 'categorie'
-  }
+  { tableName: 'categorie' }
 );

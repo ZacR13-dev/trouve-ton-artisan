@@ -1,11 +1,6 @@
 /**
- * Indicateur de chargement.
- *
- * `role="status"` et `aria-live="polite"` font annoncer le message par
- * les lecteurs d'écran dès qu'il apparaît, sans interrompre la lecture
- * en cours : l'utilisateur non voyant sait que la page travaille.
- *
- * @param {{message?: string}} props
+ * role="status" et aria-live font annoncer le message par les lecteurs
+ * d'écran sans interrompre la lecture en cours.
  */
 export function Chargement({ message = 'Chargement en cours...' }) {
   return (

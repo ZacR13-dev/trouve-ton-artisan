@@ -1,11 +1,7 @@
-/**
- * Modèle Artisan : la fiche d'un artisan ou d'une entreprise.
- * Il reflète la table `artisan` créée par 01-create-database.sql.
- */
-
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/database.js';
 
+/** Fiche d'un artisan ou d'une entreprise artisanale. */
 export const Artisan = sequelize.define(
   'Artisan',
   {
@@ -23,11 +19,9 @@ export const Artisan = sequelize.define(
       allowNull: false,
       defaultValue: 0,
       /**
-       * Le pilote MySQL renvoie les DECIMAL sous forme de chaîne
-       * ("4.5") pour préserver la précision. Le front a besoin d'un
-       * nombre pour calculer l'affichage des étoiles : la conversion
-       * est faite ici, une fois pour toutes.
-       * @returns {number|null}
+       * Le pilote MySQL renvoie les DECIMAL sous forme de chaîne pour
+       * préserver la précision. Le front a besoin d'un nombre pour
+       * calculer l'affichage des étoiles : on convertit une fois ici.
        */
       get() {
         const valeur = this.getDataValue('note');
@@ -45,9 +39,7 @@ export const Artisan = sequelize.define(
     email: {
       type: DataTypes.STRING(255),
       allowNull: false,
-      validate: {
-        isEmail: true
-      }
+      validate: { isEmail: true }
     },
     site_web: {
       type: DataTypes.STRING(255),
@@ -71,14 +63,11 @@ export const Artisan = sequelize.define(
     tableName: 'artisan',
     defaultScope: {
       /**
-       * L'adresse e-mail des artisans n'est jamais exposée par l'API :
-       * le formulaire de contact envoie le message côté serveur, à
-       * partir de l'identifiant de l'artisan. Une adresse publiée dans
-       * une réponse JSON serait immédiatement moissonnée par les robots
-       * de spam.
-       *
-       * Seul le contrôleur de contact lève cette restriction, via
-       * `Artisan.unscoped()`, pour connaître le destinataire du message.
+       * L'adresse des artisans n'est jamais exposée : publiée dans une
+       * réponse JSON, elle serait moissonnée par les robots de spam. Le
+       * formulaire de contact envoie le message côté serveur, à partir
+       * du seul identifiant. Seul le contrôleur de contact lève cette
+       * restriction, via Artisan.unscoped().
        */
       attributes: { exclude: ['email'] }
     }

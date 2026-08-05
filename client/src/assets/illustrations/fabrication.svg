@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img">
+  <rect width="400" height="300" fill="#f1f8fc" />
+
+  <g stroke="#d9e4ec" stroke-width="1">
+    <path d="M0 60h400M0 120h400M0 180h400M0 240h400" />
+    <path d="M80 0v300M160 0v300M240 0v300M320 0v300" />
+  </g>
+
+  <circle cx="200" cy="150" r="86" fill="#384050" />
+
+  <!-- Marteau posé sur une enclume -->
+  <g fill="#ffffff">
+    <rect x="160" y="176" width="80" height="12" rx="4" />
+    <path d="M168 176h64l-8-22h-48z" />
+    <rect x="186" y="118" width="52" height="18" rx="5" transform="rotate(-32 212 127)" />
+    <rect x="164" y="132" width="34" height="9" rx="4" transform="rotate(-32 181 136)" />
+  </g>
+</svg>

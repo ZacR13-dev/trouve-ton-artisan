@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img">
+  <rect width="400" height="300" fill="#f1f8fc" />
+
+  <!-- Trame discrète évoquant un plan de construction -->
+  <g stroke="#d9e4ec" stroke-width="1">
+    <path d="M0 60h400M0 120h400M0 180h400M0 240h400" />
+    <path d="M80 0v300M160 0v300M240 0v300M320 0v300" />
+  </g>
+
+  <circle cx="200" cy="150" r="86" fill="#00497c" />
+
+  <!-- Maison : toit, façade, porte et fenêtre -->
+  <g fill="#ffffff">
+    <path d="M200 100l62 50h-124z" />
+    <rect x="158" y="150" width="84" height="52" />
+  </g>
+  <g fill="#00497c">
+    <rect x="188" y="172" width="24" height="30" rx="2" />
+    <rect x="167" y="160" width="16" height="16" rx="2" />
+    <rect x="217" y="160" width="16" height="16" rx="2" />
+  </g>
+</svg>

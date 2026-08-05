@@ -1,11 +1,7 @@
-/**
- * Modèle Specialite : le métier exercé par l'artisan.
- * Il reflète la table `specialite` créée par 01-create-database.sql.
- */
-
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/database.js';
 
+/** Métier exercé par l'artisan : boulanger, plombier, coiffeur... */
 export const Specialite = sequelize.define(
   'Specialite',
   {
@@ -24,7 +20,5 @@ export const Specialite = sequelize.define(
       allowNull: false
     }
   },
-  {
-    tableName: 'specialite'
-  }
+  { tableName: 'specialite' }
 );

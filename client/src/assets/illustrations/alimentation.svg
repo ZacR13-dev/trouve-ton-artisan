@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img">
+  <rect width="400" height="300" fill="#f1f8fc" />
+
+  <g stroke="#d9e4ec" stroke-width="1">
+    <path d="M0 60h400M0 120h400M0 180h400M0 240h400" />
+    <path d="M80 0v300M160 0v300M240 0v300M320 0v300" />
+  </g>
+
+  <circle cx="200" cy="150" r="86" fill="#cd2c2e" />
+
+  <!-- Miche de pain et ses grignes -->
+  <ellipse cx="200" cy="152" rx="56" ry="34" fill="#ffffff" />
+  <g stroke="#cd2c2e" stroke-width="8" stroke-linecap="round">
+    <path d="M178 138l-10 26M200 134l-10 34M222 138l-10 26" />
+  </g>
+</svg>

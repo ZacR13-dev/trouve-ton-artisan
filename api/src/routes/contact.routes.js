@@ -1,11 +1,3 @@
-/**
- * Route du formulaire de contact.
- *
- * C'est le seul point d'entrée en écriture de l'API, et donc le plus
- * exposé : il cumule une limitation de débit renforcée, une validation
- * stricte de chaque champ et un piège à robots.
- */
-
 import { Router } from 'express';
 import rateLimit from 'express-rate-limit';
 import { body } from 'express-validator';
@@ -16,22 +8,20 @@ import { config } from '../config/env.js';
 export const contactRoutes = Router();
 
 /**
- * Limitation propre au formulaire, bien plus stricte que la limitation
- * générale : sans elle, l'API deviendrait un relais d'envoi d'e-mails
+ * Seul point d'entrée en écriture de l'API, et donc le plus exposé :
+ * sans limitation stricte, il deviendrait un relais d'envoi d'e-mails
  * gratuit pour un spammeur.
  */
 const limiteurContact = rateLimit({
-  windowMs: 60 * 60 * 1000, // une heure
+  windowMs: 60 * 60 * 1000,
   max: config.rateLimit.contactMax,
   standardHeaders: true,
   legacyHeaders: false,
   message: {
-    erreur:
-      'Vous avez envoyé trop de messages en peu de temps. Merci de réessayer dans une heure.'
+    erreur: 'Vous avez envoyé trop de messages en peu de temps. Merci de réessayer dans une heure.'
   }
 });
 
-/** POST /api/contact */
 contactRoutes.post(
   '/',
   limiteurContact,
@@ -50,7 +40,6 @@ contactRoutes.post(
       .trim()
       .isEmail()
       .withMessage("L'adresse e-mail n'est pas valide.")
-      // Ramène l'adresse à une forme canonique, sans toucher au domaine.
       .normalizeEmail({ gmail_remove_dots: false })
       .isLength({ max: 255 })
       .withMessage("L'adresse e-mail est trop longue."),
@@ -65,11 +54,8 @@ contactRoutes.post(
       .isLength({ min: 10, max: 2000 })
       .withMessage('Le message doit contenir entre 10 et 2000 caractères.'),
 
-    // Piège à robots : le champ « siteWeb » est masqué dans le
-    // formulaire, un humain ne peut donc pas le remplir. Il n'est
-    // volontairement pas rejeté ici. C'est le contrôleur qui l'examine et
-    // renvoie un faux succès : répondre « 400 champ interdit » enseignerait
-    // au robot quel champ laisser vide au prochain essai.
+    // Champ piège. Il n'est volontairement pas rejeté ici : c'est le
+    // contrôleur qui renvoie un faux succès.
     body('siteWeb').optional().isLength({ max: 255 })
   ],
   validerRequete,

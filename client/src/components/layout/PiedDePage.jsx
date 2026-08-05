@@ -1,11 +1,3 @@
-/**
- * Pied de page, identique sur toutes les pages.
- *
- * Il regroupe les liens vers les quatre pages légales et les
- * coordonnées de l'antenne lyonnaise de la Région, telles que fournies
- * dans le cahier des charges.
- */
-
 import { Link } from 'react-router-dom';
 
 /** Pages légales, à remplir plus tard par un cabinet spécialisé. */
@@ -43,8 +35,6 @@ export function PiedDePage() {
               <br />
               France
               <br />
-              {/* Le lien « tel: » permet d'appeler d'un seul geste depuis
-                  un téléphone, et le numéro reste lisible tel quel. */}
               <a href="tel:+33426734000">+33 (0)4 26 73 40 00</a>
             </address>
           </div>

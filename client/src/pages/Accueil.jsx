@@ -1,10 +1,3 @@
-/**
- * Page d'accueil.
- *
- * Elle présente le fonctionnement du site en quatre étapes, puis les
- * trois artisans du mois, conformément au cahier des charges.
- */
-
 import { recupererArtisans } from '../services/api.js';
 import { useRequeteApi } from '../hooks/useRequeteApi.js';
 import { GrilleArtisans } from '../components/artisan/GrilleArtisans.jsx';
@@ -12,10 +5,7 @@ import { Chargement } from '../components/ui/Chargement.jsx';
 import { MessageErreur } from '../components/ui/MessageErreur.jsx';
 import { MetaPage } from '../components/ui/MetaPage.jsx';
 
-/**
- * Les quatre étapes imposées par le cahier des charges. Le numéro et le
- * texte de chacune doivent obligatoirement apparaître.
- */
+/** Le numéro et le texte de chaque étape sont imposés par le client. */
 const ETAPES = [
   'Choisir la catégorie d’artisanat dans le menu.',
   'Choisir un artisan.',
@@ -57,8 +47,8 @@ export function Accueil() {
             {ETAPES.map((texte, index) => (
               <li className="col" key={texte}>
                 <div className="etape">
-                  {/* Le numéro est décoratif à l'écran : la liste
-                      ordonnée le restitue déjà aux lecteurs d'écran. */}
+                  {/* La liste ordonnée restitue déjà le rang aux lecteurs
+                      d'écran : le chiffre affiché est décoratif. */}
                   <span className="etape__numero" aria-hidden="true">
                     {index + 1}
                   </span>
@@ -78,9 +68,7 @@ export function Accueil() {
 
           {chargement && <Chargement message="Chargement des artisans du mois..." />}
           {erreur && <MessageErreur erreur={erreur} />}
-          {artisans && artisans.length > 0 && (
-            <GrilleArtisans artisans={artisans} afficherBadge />
-          )}
+          {artisans && artisans.length > 0 && <GrilleArtisans artisans={artisans} afficherBadge />}
           {artisans && artisans.length === 0 && (
             <p className="text-center mb-0">Aucun artisan n&apos;est mis en avant ce mois-ci.</p>
           )}

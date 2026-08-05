@@ -1,14 +1,7 @@
 /**
- * Message d'erreur affiché à la place d'un contenu qui n'a pas pu être
- * chargé.
- *
- * Il ne montre jamais le détail technique de l'erreur : l'utilisateur
- * reçoit une explication compréhensible et une action possible, tandis
- * que le détail reste dans les journaux du serveur.
- *
- * @param {object} props
- * @param {Error} [props.erreur] Erreur remontée par l'API.
- * @param {() => void} [props.onReessayer] Action de nouvelle tentative.
+ * Affiché à la place d'un contenu qui n'a pas pu être chargé. Le détail
+ * technique reste dans les journaux du serveur : l'utilisateur reçoit
+ * une explication compréhensible et une action possible.
  */
 export function MessageErreur({ erreur, onReessayer }) {
   const message =

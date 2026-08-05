@@ -1,24 +1,15 @@
-/**
- * Formulaire de contact d'un artisan.
- *
- * Les champs sont validés côté navigateur pour un retour immédiat, puis
- * de nouveau côté serveur : la validation du navigateur est un confort
- * d'usage, jamais une sécurité, puisqu'elle peut être contournée.
- *
- * Les messages d'erreur renvoyés par l'API sont réaffichés sous le champ
- * concerné (WCAG 2.1, critère 3.3.1 « Identification des erreurs »).
- */
-
 import { useState } from 'react';
 import { envoyerMessageContact } from '../../services/api.js';
 
-/** État initial, réutilisé pour vider le formulaire après l'envoi. */
 const CHAMPS_VIDES = { nom: '', email: '', objet: '', message: '', siteWeb: '' };
 
 /**
- * @param {object} props
- * @param {number} props.artisanId Identifiant du destinataire.
- * @param {string} props.artisanNom Nom affiché dans le message de succès.
+ * Formulaire de contact d'un artisan.
+ *
+ * Les champs sont validés par le navigateur pour un retour immédiat,
+ * puis de nouveau côté serveur : la validation du navigateur est un
+ * confort d'usage, jamais une sécurité. Les messages renvoyés par l'API
+ * sont réaffichés sous le champ concerné.
  */
 export function FormulaireContact({ artisanId, artisanNom }) {
   const [champs, setChamps] = useState(CHAMPS_VIDES);
@@ -27,13 +18,11 @@ export function FormulaireContact({ artisanId, artisanNom }) {
   const [erreurGenerale, setErreurGenerale] = useState(null);
   const [erreursChamps, setErreursChamps] = useState({});
 
-  /** @param {React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>} evenement */
   const modifierChamp = (evenement) => {
     const { name, value } = evenement.target;
     setChamps((precedents) => ({ ...precedents, [name]: value }));
   };
 
-  /** @param {React.FormEvent} evenement */
   const soumettre = async (evenement) => {
     evenement.preventDefault();
 
@@ -47,7 +36,6 @@ export function FormulaireContact({ artisanId, artisanNom }) {
       setSucces(reponse.message);
       setChamps(CHAMPS_VIDES);
     } catch (erreur) {
-      // 400 : l'API détaille le ou les champs fautifs.
       if (erreur.details) {
         setErreursChamps(erreur.details);
         setErreurGenerale('Certains champs doivent être corrigés.');
@@ -63,12 +51,11 @@ export function FormulaireContact({ artisanId, artisanNom }) {
     <form className="formulaire-contact" onSubmit={soumettre} noValidate>
       <h2 className="h4">Contacter {artisanNom}</h2>
       <p className="formulaire-contact__aide">
-        Les champs marqués d'un astérisque sont obligatoires. Une réponse vous sera apportée sous
-        48 heures.
+        Les champs marqués d&apos;un astérisque sont obligatoires. Une réponse vous sera apportée
+        sous 48 heures.
       </p>
 
-      {/* Les messages de résultat sont dans une région « live » : ils
-          sont annoncés dès leur apparition, sans déplacer le focus. */}
+      {/* Région annoncée dès l'apparition du message, sans déplacer le focus. */}
       <div aria-live="polite">
         {succes && (
           <div className="alert alert-success" role="status">
@@ -84,7 +71,10 @@ export function FormulaireContact({ artisanId, artisanNom }) {
 
       <div className="mb-3">
         <label className="form-label" htmlFor="contact-nom">
-          Votre nom <span className="champ-obligatoire" aria-hidden="true">*</span>
+          Votre nom{' '}
+          <span className="champ-obligatoire" aria-hidden="true">
+            *
+          </span>
         </label>
         <input
           id="contact-nom"
@@ -108,7 +98,10 @@ export function FormulaireContact({ artisanId, artisanNom }) {
 
       <div className="mb-3">
         <label className="form-label" htmlFor="contact-email">
-          Votre adresse e-mail <span className="champ-obligatoire" aria-hidden="true">*</span>
+          Votre adresse e-mail{' '}
+          <span className="champ-obligatoire" aria-hidden="true">
+            *
+          </span>
         </label>
         <input
           id="contact-email"
@@ -131,7 +124,10 @@ export function FormulaireContact({ artisanId, artisanNom }) {
 
       <div className="mb-3">
         <label className="form-label" htmlFor="contact-objet">
-          Objet <span className="champ-obligatoire" aria-hidden="true">*</span>
+          Objet{' '}
+          <span className="champ-obligatoire" aria-hidden="true">
+            *
+          </span>
         </label>
         <input
           id="contact-objet"
@@ -154,7 +150,10 @@ export function FormulaireContact({ artisanId, artisanNom }) {
 
       <div className="mb-3">
         <label className="form-label" htmlFor="contact-message">
-          Votre message <span className="champ-obligatoire" aria-hidden="true">*</span>
+          Votre message{' '}
+          <span className="champ-obligatoire" aria-hidden="true">
+            *
+          </span>
         </label>
         <textarea
           id="contact-message"
@@ -178,8 +177,8 @@ export function FormulaireContact({ artisanId, artisanNom }) {
         )}
       </div>
 
-      {/* Piège à robots : invisible à l'écran, retiré du parcours clavier
-          et de l'arbre d'accessibilité. Seul un automate le remplira. */}
+      {/* Piège à robots : hors du flux, du parcours clavier et de l'arbre
+          d'accessibilité. Seul un automate le remplira. */}
       <div className="champ-piege" aria-hidden="true">
         <label htmlFor="contact-site-web">Ne pas remplir ce champ</label>
         <input

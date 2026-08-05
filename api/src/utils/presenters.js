@@ -1,18 +1,11 @@
-/**
- * Mise en forme des données avant envoi au client.
- *
- * Deux objectifs : ne transmettre que les champs réellement utiles à
- * l'interface (une réponse d'API n'est pas un miroir de la base), et
- * offrir au front des noms de propriétés homogènes en camelCase.
- */
-
 import { slugify } from './slug.js';
 
 /**
- * Présente une catégorie pour le menu de navigation.
- * @param {import('../models/index.js').Categorie} categorie
- * @returns {{id: number, nom: string, slug: string}}
+ * Mise en forme des données avant envoi au client. Une réponse d'API
+ * n'est pas un miroir de la base : on ne transmet que ce dont
+ * l'interface a besoin, avec des noms de propriétés homogènes.
  */
+
 export function presenterCategorie(categorie) {
   return {
     id: categorie.id_categorie,
@@ -22,13 +15,8 @@ export function presenterCategorie(categorie) {
 }
 
 /**
- * Présente un artisan.
- * @param {import('../models/index.js').Artisan} artisan Instance chargée
- *   avec sa spécialité et la catégorie de celle-ci.
- * @param {object} [options]
- * @param {boolean} [options.detaille] Ajoute les champs réservés à la
- *   fiche complète (présentation, site web).
- * @returns {object}
+ * @param {boolean} detaille Ajoute les champs réservés à la fiche
+ *   complète : présentation et site web.
  */
 export function presenterArtisan(artisan, { detaille = false } = {}) {
   const specialite = artisan.specialite;

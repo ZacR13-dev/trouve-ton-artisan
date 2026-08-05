@@ -1,11 +1,3 @@
-/**
- * Liste des artisans, selon la catégorie choisie dans le menu ou selon
- * la recherche saisie dans l'en-tête.
- *
- * Une seule page sert les deux cas : l'affichage est identique, seuls le
- * titre et le filtre transmis à l'API changent.
- */
-
 import { useParams, useSearchParams } from 'react-router-dom';
 import { recupererArtisans } from '../services/api.js';
 import { useRequeteApi } from '../hooks/useRequeteApi.js';
@@ -16,6 +8,11 @@ import { MessageErreur } from '../components/ui/MessageErreur.jsx';
 import { MetaPage } from '../components/ui/MetaPage.jsx';
 import { NonTrouvee } from './NonTrouvee.jsx';
 
+/**
+ * Liste des artisans, par catégorie ou par recherche. Une seule page
+ * sert les deux cas : l'affichage est identique, seuls le titre et le
+ * filtre transmis à l'API changent.
+ */
 export function ListeArtisans() {
   const { slug } = useParams();
   const [parametresUrl] = useSearchParams();
@@ -33,12 +30,11 @@ export function ListeArtisans() {
     [slug, recherche]
   );
 
-  // Le nom exact de la catégorie vient de la base : on le retrouve à
-  // partir du slug de l'URL, sans jamais le reconstruire à la main.
+  // Le nom exact vient de la base : on le retrouve à partir du slug,
+  // sans jamais le reconstruire à la main.
   const categorie = categories.find((element) => element.slug === slug);
 
-  // Une catégorie inexistante est une URL qui n'existe pas : le cahier
-  // des charges demande que la page 404 s'affiche dans ce cas.
+  // Une catégorie inexistante est une adresse qui n'existe pas.
   if (erreur?.statut === 404) {
     return <NonTrouvee />;
   }
@@ -51,11 +47,6 @@ export function ListeArtisans() {
     ? `Artisans d'Auvergne-Rhône-Alpes correspondant à la recherche « ${recherche} ».`
     : `Trouvez un artisan de la catégorie ${categorie?.nom ?? ''} en Auvergne-Rhône-Alpes : note, spécialité, localisation et formulaire de contact.`;
 
-  /**
-   * Accord du compteur de résultats.
-   * @param {number} total
-   * @returns {string}
-   */
   const libelleCompteur = (total) => {
     if (total === 0) return 'Aucun artisan trouvé';
     if (total === 1) return '1 artisan trouvé';
@@ -75,8 +66,8 @@ export function ListeArtisans() {
         {chargement && <Chargement message="Chargement des artisans..." />}
         {erreur && <MessageErreur erreur={erreur} />}
 
-        {/* Les cartes suivent directement le h1 de la page : leur titre
-            doit donc être un h2 pour ne pas sauter de niveau. */}
+        {/* Les cartes suivent directement le h1 : leur titre doit être un
+            h2 pour ne pas sauter de niveau. */}
         {artisans && artisans.length > 0 && (
           <GrilleArtisans artisans={artisans} niveauTitre={2} />
         )}

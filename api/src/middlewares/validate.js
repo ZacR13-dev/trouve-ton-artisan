@@ -1,17 +1,10 @@
-/**
- * Passerelle entre express-validator et la gestion d'erreurs maison.
- *
- * Les règles de validation sont déclarées dans les fichiers de routes ;
- * ce middleware se contente de collecter leur résultat et d'interrompre
- * la requête si une donnée est invalide. Aucune valeur non validée
- * n'atteint donc les contrôleurs.
- */
-
 import { validationResult } from 'express-validator';
 import { ApiError } from '../utils/ApiError.js';
 
 /**
- * @type {import('express').RequestHandler}
+ * Collecte le résultat des règles déclarées dans les fichiers de routes
+ * et interrompt la requête si une donnée est invalide. Aucune valeur non
+ * validée n'atteint donc les contrôleurs.
  */
 export function validerRequete(req, res, next) {
   const resultat = validationResult(req);
@@ -20,8 +13,8 @@ export function validerRequete(req, res, next) {
     return next();
   }
 
-  // Les messages sont regroupés par champ pour que le front puisse les
-  // afficher directement sous l'entrée concernée.
+  // Regroupés par champ, pour que le front les affiche sous l'entrée
+  // concernée.
   const details = resultat.array().reduce((accumulateur, erreur) => {
     const champ = erreur.path ?? erreur.param ?? 'general';
     accumulateur[champ] = erreur.msg;

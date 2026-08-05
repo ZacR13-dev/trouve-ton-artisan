@@ -1,17 +1,10 @@
-/**
- * Gabarit des pages légales.
- *
- * Le cahier des charges précise que ces pages doivent rester « vides »,
- * avec l'en-tête, le pied de page et un texte d'attente : leur contenu
- * sera rédigé plus tard par un cabinet spécialisé.
- *
- * @param {object} props
- * @param {string} props.titre Titre de la page légale.
- * @param {string} props.description Description pour les moteurs de recherche.
- */
-
 import { MetaPage } from '../components/ui/MetaPage.jsx';
 
+/**
+ * Gabarit des pages légales. Le cahier des charges les veut « vides »,
+ * avec l'en-tête, le pied de page et un texte d'attente : leur contenu
+ * sera rédigé plus tard par un cabinet spécialisé.
+ */
 export function PageLegale({ titre, description }) {
   return (
     <>

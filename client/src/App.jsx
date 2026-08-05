@@ -1,11 +1,3 @@
-/**
- * Structure générale de l'application et table des routes.
- *
- * L'en-tête et le pied de page entourent la zone de contenu, ce qui
- * garantit qu'ils sont identiques sur toutes les pages, comme l'exige le
- * cahier des charges.
- */
-
 import { useEffect, useRef } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
@@ -23,15 +15,13 @@ export function App() {
   const adressePrecedente = useRef(null);
 
   /**
-   * Dans une application à page unique, changer de route ne recharge pas
-   * le document : sans intervention, l'utilisateur reste au milieu de la
-   * page précédente et le lecteur d'écran ne signale aucun changement.
-   * On remonte donc en haut et on donne le focus à la zone de contenu.
+   * Changer de route ne recharge pas le document : sans intervention,
+   * l'utilisateur reste au milieu de la page précédente et le lecteur
+   * d'écran ne signale aucun changement.
    *
-   * Ce déplacement est volontairement ignoré au tout premier affichage :
-   * si le focus était placé sur le contenu dès l'arrivée sur le site, la
-   * première tabulation atteindrait le contenu et non le lien
-   * d'évitement, qui perdrait alors toute utilité.
+   * Le déplacement est ignoré au tout premier affichage : si le focus
+   * était placé sur le contenu dès l'arrivée, la première tabulation
+   * atteindrait le contenu et non le lien d'évitement.
    */
   useEffect(() => {
     const adresse = pathname + search;
@@ -46,21 +36,15 @@ export function App() {
 
   return (
     <>
-      {/* Premier élément focusable de la page. */}
       <a className="lien-evitement" href="#contenu">
         Aller au contenu principal
       </a>
 
       <EnTete />
 
-      <main
-        id="contenu"
-        className="contenu-principal"
-        ref={contenuPrincipal}
-        // tabIndex -1 rend l'élément focusable par programme sans
-        // l'ajouter à l'ordre de tabulation.
-        tabIndex={-1}
-      >
+      {/* tabIndex -1 rend la zone focusable par programme sans l'ajouter
+          à l'ordre de tabulation. */}
+      <main id="contenu" className="contenu-principal" ref={contenuPrincipal} tabIndex={-1}>
         <Routes>
           <Route path="/" element={<Accueil />} />
           <Route path="/categorie/:slug" element={<ListeArtisans />} />
@@ -104,7 +88,6 @@ export function App() {
             }
           />
 
-          {/* Toute autre adresse affiche la page 404. */}
           <Route path="*" element={<NonTrouvee />} />
         </Routes>
       </main>
