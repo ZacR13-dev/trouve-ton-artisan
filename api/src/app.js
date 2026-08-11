@@ -1,3 +1,6 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
@@ -32,8 +35,15 @@ app.use(helmet());
  * navigateur. Les requêtes sans origine (outils en ligne de commande,
  * supervision) passent, car CORS ne les concerne pas : c'est la clé
  * d'API qui joue ce rôle de filtre.
+ *
+ * Le contrôle est monté sur « /api » et non sur le service entier. En
+ * production, ce même service distribue aussi les fichiers du front :
+ * appliqué globalement, il rejetterait les propres fichiers du site,
+ * alors qu'ils sont servis depuis la même origine et ne relèvent donc
+ * pas de CORS.
  */
 app.use(
+  '/api',
   cors({
     origin(origine, callback) {
       if (!origine || config.corsOrigins.includes(origine)) {
@@ -63,6 +73,39 @@ app.use(
 );
 
 app.use('/api', routes);
+
+/**
+ * En production, ce même service sert aussi le front compilé. Le site et
+ * son API partagent alors une seule origine : le navigateur n'a plus de
+ * requête inter-origine à faire, et il n'y a qu'un hébergement à
+ * maintenir. En développement, rien ne change : Vite garde son propre
+ * serveur sur le port 5173.
+ */
+if (config.isProduction) {
+  const racineApi = fileURLToPath(new URL('.', import.meta.url));
+  const dossierFront = path.resolve(racineApi, '../../client/dist');
+
+  /**
+   * Les fichiers d'assets portent une empreinte dans leur nom : ils sont
+   * mis en cache un an sans risque de servir une version périmée.
+   * « index: false » laisse index.html au repli ci-dessous, qui lui ne
+   * doit jamais être mis en cache.
+   */
+  app.use(express.static(dossierFront, { maxAge: '1y', index: false }));
+
+  /**
+   * Repli du routeur React : toute adresse qui n'est pas une route d'API
+   * renvoie index.html, à charge pour react-router d'afficher la bonne
+   * page, y compris sa page 404. Sans ce repli, recharger la page sur
+   * /artisan/12 tomberait sur une erreur du serveur au lieu du site.
+   */
+  app.use((req, res, next) => {
+    if (req.method !== 'GET' || req.path.startsWith('/api')) {
+      return next();
+    }
+    return res.sendFile(path.join(dossierFront, 'index.html'));
+  });
+}
 
 app.use(routeInconnue);
 app.use(gestionnaireErreurs);
