@@ -316,6 +316,25 @@ pre.code {
   max-height: 80mm;
 }
 
+/* Une frame de téléphone est bien plus haute que large : les maquettes
+   ont besoin de plus de place que les captures du site pour rester
+   lisibles une fois imprimées. */
+.galerie--maquette img {
+  max-height: 148mm;
+}
+
+/* Marque un passage qui reste à compléter avant la remise. Le fond
+   coloré est doublé d'un encadré : la couleur seule ne doit pas porter
+   l'information. */
+.a-completer {
+  padding: 0.5mm 1.5mm;
+  background: #fdf1f1;
+  border: 1px dashed var(--rouge);
+  border-radius: 2px;
+  color: var(--rouge);
+  font-weight: 600;
+}
+
 .galerie figcaption {
   margin-top: 1.5mm;
   font-size: 8.5pt;

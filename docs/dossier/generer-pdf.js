@@ -23,6 +23,10 @@ const SORTIE = path.join(__dirname, 'Trouve-ton-artisan-dossier-de-projet.pdf');
 /** Millimètres vers pouces, unité attendue par le moteur d'impression. */
 const mm = (valeur) => valeur / 25.4;
 
+/** Compte les pages d'un PDF à partir de ses objets /Type /Page. */
+const compterPages = (donnees) =>
+  (Buffer.from(donnees, 'base64').toString('latin1').match(/\/Type\s*\/Page[^s]/g) ?? []).length;
+
 const EN_TETE = `
   <div style="font-size:7.5pt;font-family:'Segoe UI',sans-serif;color:#5a6472;
               width:100%;padding:0 15mm 2mm;display:flex;justify-content:space-between;
@@ -128,7 +132,7 @@ class Session {
     // numérotation du sommaire de s'exécuter.
     await new Promise((r) => setTimeout(r, 2500));
 
-    const pdf = await session.envoyer('Page.printToPDF', {
+    const optionsImpression = {
       paperWidth: mm(210),
       paperHeight: mm(297),
       marginTop: mm(18),
@@ -140,7 +144,55 @@ class Session {
       headerTemplate: EN_TETE,
       footerTemplate: PIED,
       preferCSSPageSize: false
+    };
+
+    /**
+     * Mesure de la pagination réelle.
+     *
+     * Le nombre de pages d'une partie n'est pas déductible de sa hauteur :
+     * un tableau ou une galerie qui ne tient pas dans la place restante
+     * bascule entièrement sur la page suivante. Chaque partie est donc
+     * imprimée seule, et ses pages comptées. C'est Chrome qui répond, pas
+     * une estimation.
+     */
+    const { result: nombreSections } = await session.envoyer('Runtime.evaluate', {
+      expression: "document.querySelectorAll('.garde, .page').length",
+      returnByValue: true
     });
+
+    const pagesParSection = [];
+
+    for (let index = 0; index < nombreSections.value; index++) {
+      await session.envoyer('Runtime.evaluate', {
+        expression: `document.querySelectorAll('.garde, .page')
+          .forEach((section, i) => { section.style.display = i === ${index} ? '' : 'none'; })`
+      });
+
+      const partie = await session.envoyer('Page.printToPDF', optionsImpression);
+      pagesParSection.push(compterPages(partie.data));
+    }
+
+    // Tout réafficher, puis renseigner le sommaire avec les vraies mesures.
+    await session.envoyer('Runtime.evaluate', {
+      expression: `document.querySelectorAll('.garde, .page')
+        .forEach((section) => { section.style.display = ''; });
+        window.__appliquerPagination(${JSON.stringify(pagesParSection)});`
+    });
+
+    const { result: controle } = await session.envoyer('Runtime.evaluate', {
+      expression: `JSON.stringify({
+        total: window.__totalPagesCalcule,
+        parties: [...document.querySelectorAll('.sommaire li:not(.sous)')]
+          .map((li) => li.querySelector('a').textContent + ' p.' + li.querySelector('.num').textContent)
+      })`,
+      returnByValue: true
+    });
+
+    const { total, parties } = JSON.parse(controle.value);
+    console.log(`Pages par partie : ${pagesParSection.join(' ')} (total ${total})`);
+    parties.forEach((ligne) => console.log(`  ${ligne}`));
+
+    const pdf = await session.envoyer('Page.printToPDF', optionsImpression);
 
     fs.writeFileSync(SORTIE, Buffer.from(pdf.data, 'base64'));
 
