@@ -73,7 +73,7 @@ Relecture point par point du brief « Créer le site Trouve ton artisan ». Chaq
 
 | Exigence | État | Détail |
 |---|---|---|
-| Figma pour la maquette | ⏳ | Serveur MCP configuré, en attente de l'authentification du compte Figma |
+| Figma pour la maquette | ✅ | 17 frames réparties sur trois pages, une par support. Styles de charte et composants réutilisables déclarés dans le fichier |
 | ReactJS | ✅ | React 19.2 |
 | Bootstrap | ✅ | Bootstrap 5.3, personnalisé par surcharge de ses variables Sass |
 | Sass | ✅ | 7 feuilles, une par domaine |
@@ -83,8 +83,8 @@ Relecture point par point du brief « Créer le site Trouve ton artisan ». Chaq
 | Sequelize pour l'accès aux données | ✅ | Sequelize 6, aucune requête SQL écrite à la main |
 | Git et GitHub | ✅ | Dépôt public, commits thématiques |
 | Code propre, commenté, indenté | ✅ | 16 % de lignes de commentaire, `.editorconfig` et `.gitattributes` |
-| Conformité aux vérificateurs du W3C | 🟡 | HTML : 5 pages à 0 erreur. CSS : le validateur a limité les requêtes, contrôle à refaire sur l'adresse publique |
-| Hébergement | ⏳ | À faire |
+| Conformité aux vérificateurs du W3C | ✅ | HTML : 5 pages rendues à 0 erreur, contrôle rejoué sur la construction déployée. CSS : 2 erreurs, toutes deux dans une règle de Bootstrap 5.3, aucune dans les feuilles du projet |
+| Hébergement | ✅ | <https://trouve-ton-artisan.agence-anima.fr>, o2switch, certificat Let's Encrypt |
 
 ## 9. Identité graphique
 
@@ -110,17 +110,17 @@ Relecture point par point du brief « Créer le site Trouve ton artisan ». Chaq
 
 | Exigence | État |
 |---|---|
-| Dossier au format PDF | ✅ 28 pages |
+| Dossier au format PDF | ✅ 31 pages |
 | Page de garde | ✅ |
 | Sommaire | ✅ numéroté, vérifié contre la pagination réelle |
 | En-tête et pied de page | ✅ sur chaque page |
 | Contexte du projet | ✅ partie 1 |
-| Maquettes Figma, captures et lien | ⏳ partie 2, emplacement du lien réservé |
+| Maquettes Figma, captures et lien | ✅ partie 2, captures des 15 écrans et lien de partage |
 | Présentation de la base de données (MCD, MLD) | ✅ partie 3 |
 | Éléments de sécurité, mise en œuvre et intérêt | ✅ partie 4 |
 | Description de la veille de sécurité | ✅ partie 5, deux vulnérabilités réelles analysées |
 | Lien vers le dépôt GitHub | ✅ partie 7 |
-| Lien du site en ligne | ⏳ partie 7, emplacement réservé |
+| Lien du site en ligne | ✅ partie 7 |
 
 ## 12. Contenu du dépôt
 
@@ -133,7 +133,10 @@ Relecture point par point du brief « Créer le site Trouve ton artisan ». Chaq
 
 ## Ce qui reste à faire
 
-1. **Maquettes Figma** : authentifier le serveur MCP Figma, produire les maquettes des trois supports, insérer les captures et le lien dans la partie 2 du dossier.
-2. **Hébergement** : mettre le site en ligne et reporter l'adresse dans la partie 7.
-3. **Validation CSS du W3C** : à relancer sur l'adresse publique une fois le site en ligne.
-4. **Cohérence visuelle** : comparer de visu avec le site institutionnel de la Région.
+1. **Cohérence visuelle** : comparer de visu avec le site institutionnel de la Région, dont l'accès automatisé est protégé contre les robots.
+2. **Formulaire de contact en production** : les variables `SMTP_USER` et `SMTP_PASSWORD` restent à renseigner sur l'hébergement. Sans elles, le message est journalisé au lieu d'être expédié.
+
+## Limites connues et assumées
+
+- La feuille de style compilée relève **2 erreurs** au validateur du W3C. Elles proviennent d'une règle de Bootstrap 5.3 associant `:is()` et la pseudo-classe `:autofill`, que le validateur ne reconnaît pas. Les corriger imposerait de modifier une bibliothèque imposée par le cahier des charges, et interdirait ses mises à jour.
+- La limitation de débit de l'API a été montée sur `/api` seulement. Appliquée au service entier, qui distribue aussi le site, elle comptait chaque fichier JS, CSS et image dans le quota : un visiteur normal se serait retrouvé bloqué au bout d'une vingtaine de pages.

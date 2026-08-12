@@ -1217,6 +1217,44 @@ ARTISAN    (<span class="pk">id_artisan</span>, nom, note, ville, a_propos, emai
         titre <code>h1</code> vers <code>h3</code> sur les pages de liste, a été corrigée en
         rendant le niveau des titres de cartes adaptable au contexte.
       </p>
+      <p>
+        Cette validation a été rejouée après la mise en ligne, sur la construction de
+        production réellement déployée : les cinq pages restent à zéro erreur. Le document
+        envoyé par le serveur a par ailleurs été soumis directement au validateur depuis
+        l'adresse publique, également sans erreur.
+      </p>
+
+      <h3>Validation CSS</h3>
+      <p>
+        La feuille de style compilée a été soumise au validateur CSS du W3C depuis l'adresse
+        publique. Elle relève deux erreurs de parsage et cent trente-sept avertissements.
+      </p>
+      <table>
+        <thead><tr><th>Origine</th><th>Constat</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>2 erreurs</td>
+            <td>
+              Une règle de Bootstrap 5.3 combinant le sélecteur <code>:is()</code> et la
+              pseudo-classe <code>:autofill</code>, que le validateur ne reconnaît pas encore.
+              Aucune ne provient des feuilles Sass du projet, vérifié par recherche dans
+              <code>client/src/styles/</code>.
+            </td>
+          </tr>
+          <tr>
+            <td>137 avertissements</td>
+            <td>
+              Variables CSS, que le validateur signale comme non vérifiables statiquement, et
+              préfixes constructeurs hérités de Bootstrap. Ce ne sont pas des erreurs.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Ces deux erreurs appartiennent au code d'une bibliothèque imposée par le cahier des
+        charges. Les corriger supposerait de modifier Bootstrap lui-même, ce qui interdirait
+        toute mise à jour ultérieure : elles sont donc documentées plutôt que contournées.
+      </p>
     </section>
 
     <!-- ================= 7. LIENS ================= -->
@@ -1237,8 +1275,14 @@ ARTISAN    (<span class="pk">id_artisan</span>, nom, note, ville, a_propos, emai
       </ul>
 
       <h2>Site en ligne</h2>
-      <p class="encadre-info" id="lien-site">
-        <strong>Adresse du site :</strong> lien à insérer.
+      <p class="encadre-lien" id="lien-site">
+        <a href="https://trouve-ton-artisan.agence-anima.fr">https://trouve-ton-artisan.agence-anima.fr</a>
+      </p>
+      <p>
+        Le site est hébergé chez o2switch, sur un hébergement mutualisé. Un service Node
+        unique sert à la fois les pages du site et l'API : les deux partagent donc une seule
+        origine, ce qui supprime toute requête inter-origine entre le site et son API. Le
+        certificat est délivré par Let's Encrypt.
       </p>
 
       <h2>Organisation du dépôt</h2>
