@@ -52,7 +52,7 @@ Relecture point par point du brief « Créer le site Trouve ton artisan ». Chaq
 | Localisation | ✅ | |
 | Rubrique « À propos » | ✅ | |
 | Formulaire de contact : nom, email, objet, message | ✅ | `FormulaireContact.jsx` |
-| Envoi d'un e-mail à l'artisan | ✅ | `POST /api/contact` → `mailer.js`. Envoi réel via SMTP, redirigé en démonstration pour ne pas écrire aux adresses fictives du jeu d'essai |
+| Envoi d'un e-mail à l'artisan | ✅ | `POST /api/contact` → `mailer.js`. Envoi réel via SMTP, vérifié sur le site en ligne, redirigé en démonstration pour ne pas écrire aux adresses fictives du jeu d'essai |
 | Site web de l'artisan le cas échéant | ✅ | Affiché seulement si renseigné |
 
 ## 6. La page 404
@@ -134,7 +134,6 @@ Relecture point par point du brief « Créer le site Trouve ton artisan ». Chaq
 ## Ce qui reste à faire
 
 1. **Cohérence visuelle** : comparer de visu avec le site institutionnel de la Région, dont l'accès automatisé est protégé contre les robots.
-2. **Formulaire de contact en production** : les variables `SMTP_USER` et `SMTP_PASSWORD` restent à renseigner sur l'hébergement. Sans elles, le message est journalisé au lieu d'être expédié.
 
 ## Limites connues et assumées
 

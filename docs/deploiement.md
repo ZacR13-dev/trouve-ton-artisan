@@ -127,6 +127,8 @@ Déclarer ensuite les variables d'environnement dans la même page :
 
 Les variables `SMTP_USER` et `SMTP_PASSWORD` ne sont pas facultatives en production : sans elles, le message est journalisé au lieu d'être expédié, et le formulaire annonce un envoi qui n'a pas lieu.
 
+`SMTP_HOST` demande une précision. Une boîte hébergée sur le compte s'atteint par le **nom du serveur**, `mail.<serveur>.o2switch.net`, et non par `mail.<domaine>`. Les deux résolvent vers la même machine, mais le certificat TLS n'est émis que pour les noms du serveur : passer par le domaine fait échouer la vérification au moment du STARTTLS, avec l'erreur `Hostname/IP does not match certificate's altnames`. La solution consistant à désactiver la vérification du certificat côté client est écartée : elle échangerait une configuration correcte contre une connexion chiffrée mais non authentifiée.
+
 `PORT` n'est pas à renseigner, Passenger l'impose lui-même.
 
 Cliquer enfin sur **Run NPM Install**, puis démarrer l'application.
