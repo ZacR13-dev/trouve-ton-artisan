@@ -61,8 +61,17 @@ app.use(
 // 10 Ko, il s'agit d'une tentative de saturation.
 app.use(express.json({ limit: '10kb' }));
 
-// Freine le moissonnage des données et la force brute sur la clé d'API.
+/**
+ * Freine le moissonnage des données et la force brute sur la clé d'API.
+ *
+ * Monté sur « /api », comme le contrôle CORS. Appliqué au service entier,
+ * il compterait aussi les fichiers du front que ce même service distribue
+ * en production : une seule page consomme cinq requêtes, et un visiteur
+ * normal épuiserait le quota en une vingtaine de pages avant d'être
+ * bloqué un quart d'heure.
+ */
 app.use(
+  '/api',
   rateLimit({
     windowMs: config.rateLimit.windowMs,
     max: config.rateLimit.max,
