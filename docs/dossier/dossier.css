@@ -286,6 +286,30 @@ pre.code {
   page-break-inside: avoid;
 }
 
+/* --- Figure pleine largeur ------------------------------------------- */
+/* Le schéma d'enchaînement occupe toute la largeur utile. Comme les
+   blocs illustrés, il ne doit pas être coupé par un saut de page. */
+.figure-large {
+  margin: 4mm 0 2mm;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.figure-large img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--gris-bordure);
+  border-radius: 3px;
+}
+
+.figure-large figcaption {
+  margin-top: 1.5mm;
+  font-size: 9pt;
+  color: var(--gris-texte);
+  font-style: italic;
+}
+
 /* --- Galeries de captures ------------------------------------------- */
 .galerie {
   display: flex;

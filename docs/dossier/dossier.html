@@ -238,39 +238,16 @@
         48 heures.
       </p>
 
-      <div class="schema">
-        <pre>
-                        ┌─────────────────────┐
-                        │      ACCUEIL        │
-                        │  4 étapes + les 3   │
-                        │ artisans du mois    │
-                        └──────────┬──────────┘
-               menu catégorie      │      barre de recherche
-            ┌───────────────────────┴───────────────────────┐
-            ▼                                               ▼
- ┌─────────────────────┐                       ┌─────────────────────┐
- │  LISTE PAR CATÉGORIE│                       │ RÉSULTATS RECHERCHE │
- │   cartes artisans   │                       │   cartes artisans   │
- └──────────┬──────────┘                       └──────────┬──────────┘
-            └───────────────────┬───────────────────────┘
-                                ▼
-                     ┌─────────────────────┐
-                     │    FICHE ARTISAN    │
-                     │ visuel, note, à     │
-                     │ propos, site web    │
-                     └──────────┬──────────┘
-                                ▼
-                     ┌─────────────────────┐
-                     │ FORMULAIRE CONTACT  │
-                     │  confirmation 48h   │
-                     └─────────────────────┘
-
-  Depuis n'importe quel écran :
-    en-tête  ──► logo (accueil), menu des 4 catégories, recherche
-    pied     ──► mentions légales, données personnelles, accessibilité, cookies
-    adresse inconnue ──► PAGE 404
-        </pre>
-      </div>
+      <figure class="figure-large">
+        <img
+          src="../maquettes/png/enchainement-ecrans.png"
+          alt="Schéma de l'enchaînement des écrans. Depuis l'accueil, le menu de catégorie mène à la liste par catégorie et la barre de recherche aux résultats de recherche. Un clic sur une carte, depuis l'une ou l'autre, ouvre la fiche artisan, d'où l'envoi du message mène au formulaire de contact. Depuis n'importe quel écran, l'en-tête ramène à l'accueil et donne accès au menu et à la recherche, le pied de page mène aux quatre pages légales, et une adresse inconnue affiche la page 404."
+        />
+        <figcaption>
+          Enchaînement des écrans, généré par <code>docs/maquettes/generer-schema-enchainement.js</code>
+          à partir de la même palette que les maquettes.
+        </figcaption>
+      </figure>
 
       <p>
         L'en-tête et le pied de page sont identiques sur toutes les pages, conformément au

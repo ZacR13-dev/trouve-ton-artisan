@@ -32,7 +32,10 @@ const AGRANDISSEMENT = [
   [/-mobile\.svg$/, 2],
   [/-tablette\.svg$/, 1.5],
   [/-bureau\.svg$/, 1],
-  [/^planche-/, 1]
+  [/^planche-/, 1],
+  // Le schéma d'enchaînement est large mais peu dense : il porte du texte
+  // de 12 px, qu'un rendu à l'échelle 1 rendrait pâteux à l'impression.
+  [/^enchainement-/, 2]
 ];
 
 const facteur = (nom) => (AGRANDISSEMENT.find(([motif]) => motif.test(nom)) ?? [null, 1])[1];

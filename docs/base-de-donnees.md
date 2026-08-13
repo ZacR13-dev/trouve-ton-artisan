@@ -164,3 +164,31 @@ mysql -u root -p --default-character-set=utf8mb4 < database/02-seed-database.sql
 ```
 
 Le premier script crée également l'utilisateur applicatif `tta_app`, limité au seul `SELECT` sur les trois tables. C'est ce compte, et non `root`, que l'API utilise pour se connecter.
+
+## 8. Évolution du schéma
+
+Le cahier des charges annonce que la base « sera, à terme, alimentée par une application qui sera réalisée ultérieurement ». Deux évolutions sont déjà prévisibles : cette application devra savoir quand une fiche a été modifiée, et la colonne `image`, aujourd'hui vide faute de visuels dans le jeu d'essai, recevra de vraies adresses, souvent plus longues que les 255 caractères actuels.
+
+Ces changements se font par `ALTER TABLE`, sans toucher aux données déjà en place :
+
+```sql
+-- Création d'une colonne : horodatage tenu par le SGBD lui-même.
+ALTER TABLE artisan
+    ADD COLUMN modifie_le TIMESTAMP NOT NULL
+        DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        COMMENT 'Date de la dernière modification de la fiche';
+
+-- Modification d'une colonne existante : allongement du format.
+ALTER TABLE artisan
+    MODIFY COLUMN image VARCHAR(512) NULL;
+
+-- Suppression d'une colonne devenue inutile.
+ALTER TABLE artisan
+    DROP COLUMN modifie_le;
+```
+
+Deux précautions valent d'être notées.
+
+`MODIFY COLUMN` réécrit la définition entière : omettre `NULL` la rendrait obligatoire et ferait échouer l'instruction sur les dix-sept lignes dont `image` est vide. La définition se redonne donc en entier, jamais partiellement.
+
+Les clés étrangères sont déclarées `ON DELETE RESTRICT` : supprimer une catégorie encore rattachée à une spécialité, ou une spécialité encore exercée par un artisan, est refusé par le SGBD. C'est voulu, cela empêche les enregistrements orphelins. Une réorganisation des catégories suppose donc de réaffecter les spécialités d'abord, et non de forcer la suppression.

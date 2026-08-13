@@ -1,0 +1,28 @@
+{
+  // Extensions recommandées pour travailler sur ce projet. VS Code les
+  // propose à l'ouverture du dépôt. Chacune correspond à un outil déjà
+  // présent dans la configuration, aucune n'est décorative.
+  "recommendations": [
+    // Applique .editorconfig : indentation de 2 espaces, 4 pour le SQL,
+    // fins de ligne LF, encodage UTF-8.
+    "editorconfig.editorconfig",
+
+    // Le linter du projet, déclaré dans client/package.json.
+    "oxc.oxc-vscode",
+
+    // Exécute les scripts de database/ et interroge la base sans quitter
+    // l'éditeur, pendant le développement des requêtes Sequelize.
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-mysql",
+
+    // Renomme la balise fermante en même temps que l'ouvrante, utile dans
+    // le JSX des composants React.
+    "formulahendry.auto-rename-tag",
+
+    // Le code et les commentaires sont rédigés en français : le
+    // correcteur évite les fautes dans les libellés affichés à
+    // l'utilisateur comme dans la documentation.
+    "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-french"
+  ]
+}
