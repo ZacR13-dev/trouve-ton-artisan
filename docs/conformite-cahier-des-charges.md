@@ -110,7 +110,7 @@ Relecture point par point du brief « Créer le site Trouve ton artisan ». Chaq
 
 | Exigence | État |
 |---|---|
-| Dossier au format PDF | ✅ 31 pages |
+| Dossier au format PDF | ✅ 30 pages |
 | Page de garde | ✅ |
 | Sommaire | ✅ numéroté, vérifié contre la pagination réelle |
 | En-tête et pied de page | ✅ sur chaque page |

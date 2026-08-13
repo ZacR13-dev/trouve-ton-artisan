@@ -286,6 +286,15 @@ pre.code {
   page-break-inside: avoid;
 }
 
+/* --- Bloc illustré ---------------------------------------------------- */
+/* Un titre, sa galerie et sa légende forment un tout. Sans cette règle,
+   la légende se détache de ses images et se retrouve seule en haut d'une
+   page, le bloc suivant n'ayant plus la place de s'y insérer. */
+.bloc-illustre {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
 /* --- Figure pleine largeur ------------------------------------------- */
 /* Le schéma d'enchaînement occupe toute la largeur utile. Comme les
    blocs illustrés, il ne doit pas être coupé par un saut de page. */
@@ -344,7 +353,7 @@ pre.code {
    ont besoin de plus de place que les captures du site pour rester
    lisibles une fois imprimées. */
 .galerie--maquette img {
-  max-height: 148mm;
+  max-height: 140mm;
 }
 
 /* Marque un passage qui reste à compléter avant la remise. Le fond
